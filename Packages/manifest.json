@@ -39,6 +39,8 @@
     "com.unity.modules.xr": "1.0.0",
     "com.leopotam.ecs": "https://github.com/Leopotam/ecs.git",
 	"com.leopotam.ecs-unityintegration": "https://github.com/Leopotam/ecs-unityintegration.git",
+	"com.elestrago.simpleui": "https://gitlab.com/elestrago63/simpleui.git#upm",
+	"com.neuecc.unirx": "https://github.com/neuecc/UniRx.git?path=Assets/Plugins/UniRx/Scripts"
   },
   "scopedRegistries": [
     {
