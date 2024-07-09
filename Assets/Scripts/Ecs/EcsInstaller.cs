@@ -1,5 +1,6 @@
 using Ecs.Core;
 using Ecs.Systems.Initialize;
+using Ecs.Systems.Update;
 using Leopotam.Ecs;
 using Zenject;
 
@@ -11,8 +12,9 @@ namespace Ecs
         {
             Container.Bind<EcsWorld>().To<BestEcsWorld>().AsSingle();
             Container.BindInterfacesAndSelfTo<EcsBootstrap>().AsSingle().NonLazy();
-            
+
             BindInitSystems();
+            BindUpdateSystems();
         }
 
         private void BindInitSystems()
@@ -21,6 +23,11 @@ namespace Ecs
             Container.BindInterfacesAndSelfTo<GameStartSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<InputInitializeSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<PlayerInitializeSystem>().AsSingle();
+        }
+
+        private void BindUpdateSystems()
+        {
+            Container.BindInterfacesAndSelfTo<PlayerMovementSystem>().AsSingle();
         }
     }
 }

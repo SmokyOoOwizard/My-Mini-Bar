@@ -26,6 +26,8 @@ namespace Ecs.Systems.Initialize
             playerEntity.Get<PlayerComponent>();
 
             playerEntity.Get<TransformRefComponent>().Value = _playerView.transform;
+
+            playerEntity.Get<SpeedComponent>().Value = _playerView.Speed;
         }
     }
 }
