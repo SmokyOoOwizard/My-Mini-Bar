@@ -39,7 +39,6 @@
     "com.unity.modules.xr": "1.0.0",
     "com.leopotam.ecs": "https://github.com/Leopotam/ecs.git",
 	"com.leopotam.ecs-unityintegration": "https://github.com/Leopotam/ecs-unityintegration.git",
-    "com.svermeulen.extenject": "9.2.0-stcf3"
   },
   "scopedRegistries": [
     {
