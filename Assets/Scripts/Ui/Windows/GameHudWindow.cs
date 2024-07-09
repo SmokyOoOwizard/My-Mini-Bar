@@ -1,4 +1,5 @@
 ﻿using SimpleUi;
+using Ui.Joystick;
 
 namespace Ui.Windows
 {
@@ -8,7 +9,7 @@ namespace Ui.Windows
 
         protected override void AddControllers()
         {
-            throw new System.NotImplementedException();
+            AddController<JoystickController>();
         }
     }
 }

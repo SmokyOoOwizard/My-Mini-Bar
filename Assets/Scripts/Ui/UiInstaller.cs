@@ -1,25 +1,45 @@
+using SimpleUi;
+using SimpleUi.Interfaces;
+using SimpleUi.Signals;
+using Ui.Joystick;
 using Ui.Windows;
 using UnityEngine;
 using Zenject;
 
-public class UiInstaller : MonoInstaller
+namespace Ui
 {
-    [SerializeField] private Canvas canvas;
-    
-    public override void InstallBindings()
+    public class UiInstaller : MonoInstaller
     {
-        BindWindows();
-        BindWidgets();
-    }
+        [SerializeField]
+        private Canvas canvas;
 
-    private void BindWindows()
-    {
-        Container.BindInterfacesAndSelfTo<GameHudWindow>().AsSingle();
-    }
+        [SerializeField]
+        private JoystickView joystickView;
 
-    private void BindWidgets()
-    {
-        var canvasView = Container.InstantiatePrefabForComponent<Canvas>(canvas);
-        var canvasTransform = canvasView.transform;
+        public override void InstallBindings()
+        {
+            BindWindows();
+            BindWidgets();
+
+            SignalBusInstaller.Install(Container);
+        }
+
+        private void BindWindows()
+        {
+            Container.BindUiSignals(EWindowLayer.Local);
+            Container.BindWindowsController<WindowsController>(EWindowLayer.Local);
+
+            Container.BindInterfacesAndSelfTo<GameHudWindow>().AsSingle();
+        }
+
+        private void BindWidgets()
+        {
+            var canvasView = Container.InstantiatePrefabForComponent<Canvas>(canvas);
+            var canvasTransform = canvasView.transform;
+
+            Container.Bind<IUiFilter>().To<CustomGraphicRaycaster>().FromComponentOn(canvas.gameObject).AsSingle();
+
+            Container.BindUiView<JoystickController, JoystickView>(joystickView, canvasTransform);
+        }
     }
 }
