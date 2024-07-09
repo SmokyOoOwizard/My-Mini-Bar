@@ -11,11 +11,12 @@ namespace Ecs.Core
         private readonly EcsSystems _fixedSystems;
 
         public EcsBootstrap(
+            EcsWorld world,
             IUpdateEcsSystem[] updateSystems,
             IFixedUpdateEcsSystem[] fixedSystems
         )
         {
-            _world = new EcsWorld();
+            _world = world;
             _updateSystems = new EcsSystems(_world, "Update");
             foreach (var system in updateSystems)
             {
