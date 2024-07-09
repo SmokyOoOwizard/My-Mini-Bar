@@ -12,18 +12,23 @@ namespace Ecs.Core
 
         public EcsBootstrap(
             EcsWorld world,
+            IEcsInitSystem[] initSystems,
             IUpdateEcsSystem[] updateSystems,
             IFixedUpdateEcsSystem[] fixedSystems
         )
         {
             _world = world;
             _updateSystems = new EcsSystems(_world, "Update");
+            foreach (var initSystem in initSystems)
+            {
+                _updateSystems.Add(initSystem);
+            }
+
             foreach (var system in updateSystems)
             {
                 _updateSystems.Add(system);
             }
 
-            _updateSystems.Init();
 
             _fixedSystems = new EcsSystems(_world, "Fixed");
             foreach (var system in fixedSystems)
@@ -31,14 +36,16 @@ namespace Ecs.Core
                 _fixedSystems.Add(system);
             }
 
-            _fixedSystems.Init();
-
-
 #if UNITY_EDITOR
             Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(_world);
             Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_updateSystems);
             Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_fixedSystems);
 #endif
+
+            _updateSystems.Init();
+            _fixedSystems.Init();
+
+
         }
 
         public void Tick()
