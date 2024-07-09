@@ -20,6 +20,7 @@ namespace Ecs
             Container.BindInterfacesAndSelfTo<UiInitializeSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameStartSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<InputInitializeSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PlayerInitializeSystem>().AsSingle();
         }
     }
 }

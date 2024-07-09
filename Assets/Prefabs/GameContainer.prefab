@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7638346453144414100}
   - component: {fileID: 3735947399428109316}
   - component: {fileID: 5063716380518307171}
+  - component: {fileID: 6118119381890265774}
   m_Layer: 0
   m_Name: GameContainer
   m_TagString: Untagged
@@ -50,6 +51,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 3735947399428109316}
   - {fileID: 5063716380518307171}
+  - {fileID: 6118119381890265774}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -94,3 +96,16 @@ MonoBehaviour:
   canvas: {fileID: 8200033533788406260, guid: 73c13907810256a48a786b3a98120168, type: 3}
   joystickView: {fileID: 849057881928066203, guid: 70cb9423079fcea46b9eed6d1ad4f90f,
     type: 3}
+--- !u!114 &6118119381890265774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024014561298481620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5920bae1c1e447be94a99738d0729c7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
