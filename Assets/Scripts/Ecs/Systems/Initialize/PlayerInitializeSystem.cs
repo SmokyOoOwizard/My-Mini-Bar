@@ -32,6 +32,8 @@ namespace Ecs.Systems.Initialize
             playerEntity.Get<CameraTargetComponent>();
 
             playerEntity.Get<ViewRefComponent<PlayerView>>().Value = _playerView;
+
+            playerEntity.Get<StackInventoryComponent>();
         }
     }
 }
