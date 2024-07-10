@@ -1,6 +1,8 @@
-﻿using Ecs.Components;
+﻿using System.Collections.Generic;
+using Ecs.Components;
 using Ecs.Components.Refs;
 using Ecs.Components.Timer;
+using Ecs.Utils;
 using Ecs.Views;
 using Leopotam.Ecs;
 
@@ -38,7 +40,7 @@ namespace Ecs.Systems.Initialize
                 
                 item.Get<PrefabComponent<ItemView>>().Value = spawnerView.itemPrefab;
 
-                item.Get<StackInventoryComponent>();
+                item.Get<InventoryComponent<List<EntityId>>>();
             }
         }
     }

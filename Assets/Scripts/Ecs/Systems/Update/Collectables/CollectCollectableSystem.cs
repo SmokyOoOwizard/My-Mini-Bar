@@ -1,4 +1,5 @@
-﻿using Ecs.Components;
+﻿using System.Collections.Generic;
+using Ecs.Components;
 using Ecs.Components.Collectables;
 using Ecs.Core;
 using Ecs.Utils;
@@ -8,7 +9,7 @@ namespace Ecs.Systems.Update.Collectables
 {
     public class CollectCollectableSystem : IUpdateEcsSystem
     {
-        private EcsFilter<PlayerComponent, StackInventoryComponent> _playerFilter;
+        private EcsFilter<PlayerComponent, InventoryComponent<Stack<EntityId>>> _playerFilter;
         private EcsFilter<CollectableComponent, CollectComponent> _itemsFilter;
         
         public void Run()

@@ -1,6 +1,8 @@
-﻿using Ecs.Components;
+﻿using System.Collections.Generic;
+using Ecs.Components;
 using Ecs.Components.Parameters;
 using Ecs.Components.Refs;
+using Ecs.Utils;
 using Ecs.Views;
 using Leopotam.Ecs;
 
@@ -34,7 +36,7 @@ namespace Ecs.Systems.Initialize
 
             playerEntity.Get<ViewRefComponent<PlayerView>>().Value = _playerView;
 
-            playerEntity.Get<StackInventoryComponent>();
+            playerEntity.Get<InventoryComponent<Stack<EntityId>>>();
             
             playerEntity.Get<PickUpDistanceComponent>().Value = _playerView.PickUpDistance;
         }
