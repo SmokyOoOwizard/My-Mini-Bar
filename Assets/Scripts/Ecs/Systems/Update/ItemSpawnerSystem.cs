@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using Ecs.Components;
 using Ecs.Components.Collectables;
+using Ecs.Components.Parameters;
 using Ecs.Components.Refs;
+using Ecs.Components.Swapner;
 using Ecs.Core;
 using Ecs.Utils;
 using Ecs.Views;

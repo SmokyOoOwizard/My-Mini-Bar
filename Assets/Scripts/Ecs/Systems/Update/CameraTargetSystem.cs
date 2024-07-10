@@ -1,4 +1,5 @@
 ﻿using Ecs.Components;
+using Ecs.Components.Camera;
 using Ecs.Components.Refs;
 using Ecs.Core;
 using Ecs.Views;

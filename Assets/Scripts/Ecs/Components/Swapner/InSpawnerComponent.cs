@@ -1,6 +1,6 @@
 ﻿using Leopotam.Ecs;
 
-namespace Ecs.Components
+namespace Ecs.Components.Swapner
 {
     public struct InSpawnerComponent : IEcsIgnoreInFilter
     {

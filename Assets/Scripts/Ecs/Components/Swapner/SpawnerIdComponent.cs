@@ -1,6 +1,6 @@
 ﻿using Ecs.Utils;
 
-namespace Ecs.Components
+namespace Ecs.Components.Swapner
 {
     public struct SpawnerIdComponent
     {

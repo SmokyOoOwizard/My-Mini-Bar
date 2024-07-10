@@ -2,6 +2,7 @@
 using DG.Tweening;
 using Ecs.Components;
 using Ecs.Components.Collectables;
+using Ecs.Components.Parameters;
 using Ecs.Components.Refs;
 using Ecs.Core;
 using Ecs.Utils;

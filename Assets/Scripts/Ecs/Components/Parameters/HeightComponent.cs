@@ -1,4 +1,4 @@
-﻿namespace Ecs.Components
+﻿namespace Ecs.Components.Parameters
 {
     public struct HeightComponent
     {

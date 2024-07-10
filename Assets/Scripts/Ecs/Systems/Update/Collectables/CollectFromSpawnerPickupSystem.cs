@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Ecs.Components;
 using Ecs.Components.Collectables;
+using Ecs.Components.Swapner;
+using Ecs.Components.Timer;
 using Ecs.Core;
 using Ecs.Utils;
 using Leopotam.Ecs;
