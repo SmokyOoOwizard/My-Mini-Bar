@@ -1,4 +1,5 @@
-﻿using Ecs.Components;
+﻿using System.Collections.Generic;
+using Ecs.Components;
 using Ecs.Components.Collectables;
 using Ecs.Components.Refs;
 using Ecs.Core;
@@ -18,7 +19,7 @@ namespace Ecs.Systems.Update
             SpawnPointComponent,
             PrefabComponent<ItemView>,
             DoneComponent,
-            StackInventoryComponent
+            InventoryComponent<List<EntityId>>
         > _spawnerFilter;
 
         public ItemSpawnerSystem(EcsWorld world)
@@ -42,10 +43,14 @@ namespace Ecs.Systems.Update
 
                 var itemEntity = _world.NewEntity();
                 var packedItem = itemEntity.Pack();
-                inventory.Push(packedItem);
+                inventory.Add(packedItem);
 
                 itemEntity.Get<TransformRefComponent>().Value = item.transform;
                 itemEntity.Get<CollectableComponent>();
+                itemEntity.Get<InSpawnerComponent>();
+
+                var spawner = _spawnerFilter.GetEntity(entityId);
+                itemEntity.Get<SpawnerIdComponent>().Value = spawner.Pack();
             }
         }
     }

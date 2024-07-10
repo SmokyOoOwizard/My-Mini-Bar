@@ -13,13 +13,11 @@ namespace Ecs.Utils
             };
         }
 
-        public static EcsEntity? Unpack(this EntityId id, EcsWorld world)
+        public static bool TryUnpack(this EntityId id, EcsWorld world, out EcsEntity entity)
         {
-            var entity = world.RestoreEntityFromInternalId(id.Id, id.Gen);
-            if (!entity.IsAlive())
-                return null;
+            entity = world.RestoreEntityFromInternalId(id.Id, id.Gen);
 
-            return entity;
+            return entity.IsAlive();
         }
     }
 }
