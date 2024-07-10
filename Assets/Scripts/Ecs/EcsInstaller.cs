@@ -37,6 +37,8 @@ namespace Ecs
             Container.BindInterfacesAndSelfTo<CollectCollectableSystem>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<TimerSystem>().AsSingle();
+            
+            Container.BindInterfacesAndSelfTo<ItemSpawnerSystem>().AsSingle();
         }
     }
 }
