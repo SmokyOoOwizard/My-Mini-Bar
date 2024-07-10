@@ -42,6 +42,8 @@ namespace Ecs.Systems.Update
                 var item = Object.Instantiate(prefab, spawnPoint.position, Quaternion.identity);
 
                 var itemEntity = _world.NewEntity();
+                item.gameObject.Link(itemEntity);
+                
                 var packedItem = itemEntity.Pack();
                 inventory.Add(packedItem);
 

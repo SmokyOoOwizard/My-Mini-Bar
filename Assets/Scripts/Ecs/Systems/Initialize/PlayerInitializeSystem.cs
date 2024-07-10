@@ -25,6 +25,7 @@ namespace Ecs.Systems.Initialize
         public void Init()
         {
             var playerEntity = _world.NewEntity();
+            _playerView.gameObject.Link(playerEntity);
 
             playerEntity.Get<PlayerComponent>();
 
