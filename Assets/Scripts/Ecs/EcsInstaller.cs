@@ -1,6 +1,7 @@
 using Ecs.Core;
 using Ecs.Systems.Initialize;
 using Ecs.Systems.Update;
+using Ecs.Systems.Update.Collectables;
 using Leopotam.Ecs;
 using Zenject;
 
@@ -30,6 +31,8 @@ namespace Ecs
         {
             Container.BindInterfacesAndSelfTo<PlayerMovementSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<CameraTargetSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CollectablePickupSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CollectCollectableSystem>().AsSingle();
         }
     }
 }
