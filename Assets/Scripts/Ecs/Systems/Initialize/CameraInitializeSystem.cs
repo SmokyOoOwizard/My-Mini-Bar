@@ -20,11 +20,11 @@ namespace Ecs.Systems.Initialize
 
         public void Init()
         {
-            var playerEntity = _world.NewEntity();
+            var cameraEntity = _world.NewEntity();
 
-            playerEntity.Get<CameraComponent>();
+            cameraEntity.Get<CameraComponent>();
 
-            playerEntity.Get<ViewRefComponent<CameraView>>().Value = _cameraView;
+            cameraEntity.Get<ViewRefComponent<CameraView>>().Value = _cameraView;
         }
     }
 }
