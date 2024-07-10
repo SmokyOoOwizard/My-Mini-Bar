@@ -26,6 +26,12 @@ namespace Ui.Joystick
             View.touchZone.OnPointerMoveCmd.Subscribe(OnPointerMove).AddTo(View);
         }
 
+        public override void OnShow()
+        {
+            View.background.gameObject.SetActive(false);
+            View.handle.gameObject.SetActive(false);
+        }
+
         private void OnPointerDown(PointerEventData eventData)
         {
             View.background.gameObject.SetActive(true);
