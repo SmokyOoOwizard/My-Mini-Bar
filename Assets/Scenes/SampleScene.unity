@@ -560,6 +560,16 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 4142450839750955725}
+    - target: {fileID: 1784555349988802980, guid: 0cad00fd539da20488168c8834f9ada6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.103
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784555349988802980, guid: 0cad00fd539da20488168c8834f9ada6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.248
+      objectReference: {fileID: 0}
     - target: {fileID: 2827938986867258172, guid: 0cad00fd539da20488168c8834f9ada6,
         type: 3}
       propertyPath: m_Name
@@ -615,6 +625,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8181861863647234564, guid: 0cad00fd539da20488168c8834f9ada6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.103
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181861863647234564, guid: 0cad00fd539da20488168c8834f9ada6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.248
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -643,7 +663,7 @@ PrefabInstance:
     - target: {fileID: 4208097197654525481, guid: 82a38ef72e6f17844b449dce481811bd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.103
       objectReference: {fileID: 0}
     - target: {fileID: 4208097197654525481, guid: 82a38ef72e6f17844b449dce481811bd,
         type: 3}
@@ -653,7 +673,7 @@ PrefabInstance:
     - target: {fileID: 4208097197654525481, guid: 82a38ef72e6f17844b449dce481811bd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4.248
       objectReference: {fileID: 0}
     - target: {fileID: 4208097197654525481, guid: 82a38ef72e6f17844b449dce481811bd,
         type: 3}
@@ -694,6 +714,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620292698023944718, guid: 82a38ef72e6f17844b449dce481811bd,
+        type: 3}
+      propertyPath: PickUpDistance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

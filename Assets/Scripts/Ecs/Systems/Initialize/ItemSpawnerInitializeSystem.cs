@@ -33,6 +33,12 @@ namespace Ecs.Systems.Initialize
                 item.Get<TimerComponent>().Value = spawnerView.Timer;
 
                 item.Get<TimerLeftComponent>().Value = spawnerView.Timer;
+
+                item.Get<SpawnPointComponent>().Value = spawnerView.spawnPoint;
+                
+                item.Get<PrefabComponent<ItemView>>().Value = spawnerView.itemPrefab;
+
+                item.Get<StackInventoryComponent>();
             }
         }
     }
