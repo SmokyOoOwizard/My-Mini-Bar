@@ -23,11 +23,13 @@ namespace Ecs
             Container.BindInterfacesAndSelfTo<GameStartSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<InputInitializeSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<PlayerInitializeSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CameraInitializeSystem>().AsSingle();
         }
 
         private void BindUpdateSystems()
         {
             Container.BindInterfacesAndSelfTo<PlayerMovementSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CameraTargetSystem>().AsSingle();
         }
     }
 }
