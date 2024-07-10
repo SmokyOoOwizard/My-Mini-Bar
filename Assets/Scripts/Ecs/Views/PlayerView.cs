@@ -6,5 +6,6 @@ namespace Ecs.Views
     {
         public float Speed;
         public float PickUpDistance;
+        public Transform stackInventoryParent;
     }
 }
