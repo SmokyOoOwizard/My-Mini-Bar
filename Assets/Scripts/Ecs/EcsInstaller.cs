@@ -31,8 +31,11 @@ namespace Ecs
         {
             Container.BindInterfacesAndSelfTo<PlayerMovementSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<CameraTargetSystem>().AsSingle();
+            
             Container.BindInterfacesAndSelfTo<CollectablePickupSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<CollectCollectableSystem>().AsSingle();
+            
+            Container.BindInterfacesAndSelfTo<TimerSystem>().AsSingle();
         }
     }
 }
