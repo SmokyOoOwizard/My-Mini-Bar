@@ -1,4 +1,5 @@
 ﻿using Ecs.Components;
+using Ecs.Components.Refs;
 using Ecs.Views;
 using Leopotam.Ecs;
 

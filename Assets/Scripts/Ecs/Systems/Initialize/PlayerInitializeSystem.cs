@@ -30,6 +30,8 @@ namespace Ecs.Systems.Initialize
             playerEntity.Get<SpeedComponent>().Value = _playerView.Speed;
 
             playerEntity.Get<CameraTargetComponent>();
+
+            playerEntity.Get<ViewRefComponent<PlayerView>>().Value = _playerView;
         }
     }
 }
