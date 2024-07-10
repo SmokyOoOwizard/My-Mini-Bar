@@ -48,6 +48,7 @@ namespace Ecs.Systems.Update
                 itemEntity.Get<TransformRefComponent>().Value = item.transform;
                 itemEntity.Get<CollectableComponent>();
                 itemEntity.Get<InSpawnerComponent>();
+                itemEntity.Get<HeightComponent>().Value = item.Height;
 
                 var spawner = _spawnerFilter.GetEntity(entityId);
                 itemEntity.Get<SpawnerIdComponent>().Value = spawner.Pack();

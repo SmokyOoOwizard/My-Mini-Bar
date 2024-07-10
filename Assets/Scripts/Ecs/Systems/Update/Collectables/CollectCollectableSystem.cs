@@ -13,10 +13,19 @@ namespace Ecs.Systems.Update.Collectables
 {
     public class CollectCollectableSystem : IUpdateEcsSystem
     {
-        private EcsFilter<PlayerComponent, InventoryComponent<Stack<EntityId>>, StackInventoryParentComponent>
-            _playerFilter;
+        private EcsFilter<
+            PlayerComponent,
+            InventoryComponent<Stack<EntityId>>,
+            StackInventoryParentComponent,
+            StackInventoryHeightComponent
+        > _playerFilter;
 
-        private EcsFilter<CollectableComponent, CollectComponent, TransformRefComponent> _itemsFilter;
+        private EcsFilter<
+            CollectableComponent,
+            CollectComponent,
+            TransformRefComponent,
+            HeightComponent
+        > _itemsFilter;
 
         public void Run()
         {
@@ -25,6 +34,7 @@ namespace Ecs.Systems.Update.Collectables
 
             var inventory = _playerFilter.Get2(0).Value;
             var stackParent = _playerFilter.Get3(0).Value;
+            ref var stackHeight = ref _playerFilter.Get4(0).Value;
 
             foreach (var itemId in _itemsFilter)
             {
@@ -39,9 +49,14 @@ namespace Ecs.Systems.Update.Collectables
 
                 var itemTransform = _itemsFilter.Get3(itemId).Value;
 
-                var tween = itemTransform.DOMoveInTargetLocalSpace(stackParent, Vector3.zero, 1);
+                var itemOffset = new Vector3(0, stackHeight, 0);
+
+                var tween = itemTransform.DOMoveInTargetLocalSpace(stackParent, itemOffset, 1);
                 tween.onComplete = () => itemTransform.SetParent(stackParent);
                 tween.SetAutoKill(true);
+
+                var itemHeight = _itemsFilter.Get4(itemId).Value;
+                stackHeight += itemHeight;
             }
         }
     }

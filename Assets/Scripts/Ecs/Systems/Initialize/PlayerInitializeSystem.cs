@@ -41,6 +41,7 @@ namespace Ecs.Systems.Initialize
             playerEntity.Get<PickUpDistanceComponent>().Value = _playerView.PickUpDistance;
 
             playerEntity.Get<StackInventoryParentComponent>().Value = _playerView.stackInventoryParent;
+            playerEntity.Get<StackInventoryHeightComponent>();
         }
     }
 }
