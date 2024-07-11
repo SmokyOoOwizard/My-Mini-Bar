@@ -3,7 +3,7 @@ using Ecs.Components;
 using Ecs.Components.Collectables;
 using Ecs.Components.Parameters;
 using Ecs.Components.Refs;
-using Ecs.Components.Swapner;
+using Ecs.Components.Spawner;
 using Ecs.Core;
 using Ecs.Utils;
 using Ecs.Views;

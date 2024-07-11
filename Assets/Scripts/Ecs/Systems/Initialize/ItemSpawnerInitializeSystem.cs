@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Ecs.Components;
 using Ecs.Components.Refs;
-using Ecs.Components.Swapner;
+using Ecs.Components.Spawner;
 using Ecs.Components.Timer;
 using Ecs.Utils;
 using Ecs.Views;
