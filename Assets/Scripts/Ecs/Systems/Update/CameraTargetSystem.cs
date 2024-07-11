@@ -2,6 +2,7 @@
 using Ecs.Components.Refs;
 using Ecs.Core;
 using Ecs.Views;
+using Ecs.Views.Impl;
 using Leopotam.Ecs;
 
 namespace Ecs.Systems.Update

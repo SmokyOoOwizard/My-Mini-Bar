@@ -302,6 +302,11 @@ PrefabInstance:
       propertyPath: Timer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 791279060482147677, guid: 2cfd67c3eb47f864bb3e4ba9cddcf7f0,
+        type: 3}
+      propertyPath: timer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2817195457893615043, guid: 2cfd67c3eb47f864bb3e4ba9cddcf7f0,
         type: 3}
       propertyPath: m_Name
@@ -527,6 +532,31 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1328790596}
+    - target: {fileID: 6118119381890265774, guid: 16bc108a830d64a49a913280200507e5,
+        type: 3}
+      propertyPath: views.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118119381890265774, guid: 16bc108a830d64a49a913280200507e5,
+        type: 3}
+      propertyPath: views.Array.data[0]
+      value: 
+      objectReference: {fileID: 1328790596}
+    - target: {fileID: 6118119381890265774, guid: 16bc108a830d64a49a913280200507e5,
+        type: 3}
+      propertyPath: views.Array.data[1]
+      value: 
+      objectReference: {fileID: 2751950862009630659}
+    - target: {fileID: 6118119381890265774, guid: 16bc108a830d64a49a913280200507e5,
+        type: 3}
+      propertyPath: views.Array.data[2]
+      value: 
+      objectReference: {fileID: 875915083}
+    - target: {fileID: 6118119381890265774, guid: 16bc108a830d64a49a913280200507e5,
+        type: 3}
+      propertyPath: views.Array.data[3]
+      value: 
+      objectReference: {fileID: 9039959371242007163}
     - target: {fileID: 6118119381890265774, guid: 16bc108a830d64a49a913280200507e5,
         type: 3}
       propertyPath: itemSpawnerViews.Array.size

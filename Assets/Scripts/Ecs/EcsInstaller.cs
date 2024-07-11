@@ -20,13 +20,10 @@ namespace Ecs
 
         private void BindInitSystems()
         {
+            Container.BindInterfacesAndSelfTo<ViewsInitializeSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<UiInitializeSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameStartSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<InputInitializeSystem>().AsSingle();
-            Container.BindInterfacesAndSelfTo<PlayerInitializeSystem>().AsSingle();
-            Container.BindInterfacesAndSelfTo<CameraInitializeSystem>().AsSingle();
-            Container.BindInterfacesAndSelfTo<ItemSpawnerInitializeSystem>().AsSingle();
-            Container.BindInterfacesAndSelfTo<ItemReceiverInitializeSystem>().AsSingle();
         }
 
         private void BindUpdateSystems()

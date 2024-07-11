@@ -1,25 +1,18 @@
-﻿using Ecs.Views;
+﻿using System.Collections.Generic;
+using Ecs.Views;
 using UnityEngine;
 using Zenject;
 
 public class GameLevelInstaller : MonoInstaller<GameLevelInstaller>
 {
     [SerializeField]
-    private PlayerView player;
-    [SerializeField]
-    private CameraView camera;
-    
-    [SerializeField]
-    private ItemSpawnerView[] itemSpawnerViews;
-    [SerializeField]
-    private ItemReceiverSlotView[] itemReceiverViews;
+    private List<AEntityView> views;
 
     public override void InstallBindings()
     {
-        Container.BindInstance(player).AsSingle();
-        Container.BindInstance(camera).AsSingle();
-        
-        Container.BindInstances(itemSpawnerViews);
-        Container.BindInstances(itemReceiverViews);
+        foreach (var view in views)
+        {
+            Container.Bind(view.GetType(), typeof(AEntityView)).FromInstance(view);
+        }
     }
 }

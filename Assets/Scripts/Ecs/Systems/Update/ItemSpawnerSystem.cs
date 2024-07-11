@@ -1,12 +1,10 @@
 ﻿using Ecs.Components;
 using Ecs.Components.Items;
-using Ecs.Components.Parameters;
-using Ecs.Components.Refs;
 using Ecs.Components.Spawner;
 using Ecs.Components.Timer;
 using Ecs.Core;
 using Ecs.Utils;
-using Ecs.Views;
+using Ecs.Views.Impl;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -57,11 +55,7 @@ namespace Ecs.Systems.Update
             var item = Object.Instantiate(prefab, spawnPoint.position, Quaternion.identity);
 
             var itemEntity = _world.NewEntity();
-            item.gameObject.Link(itemEntity);
-
-            itemEntity.Get<TransformRefComponent>().Value = item.transform;
-            itemEntity.Get<HeightComponent>().Value = item.Height;
-            itemEntity.Get<ItemTypeComponent>().Value = item.Type;
+            item.Init(itemEntity, _world);
             
             return itemEntity;
         }

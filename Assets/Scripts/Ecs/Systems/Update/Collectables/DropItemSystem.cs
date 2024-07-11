@@ -51,13 +51,13 @@ namespace Ecs.Systems.Update.Collectables
 
                 if (!packedItem.TryUnpack(_world, out var itemEntity))
                     continue;
-                
+
                 var itemTransform = itemEntity.Get<TransformRefComponent>().Value;
                 var stackParent = receiverEntity.Get<TransformRefComponent>().Value;
                 var tween = itemTransform.DOMoveInTargetLocalSpace(stackParent, Vector3.zero, 1);
                 tween.onComplete = () => itemTransform.SetParent(stackParent);
                 tween.SetAutoKill(true);
-                
+
                 entity.Del<DropItemToComponent>();
             }
         }
