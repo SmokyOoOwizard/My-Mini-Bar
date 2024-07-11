@@ -2,6 +2,7 @@ using Ecs.Core;
 using Ecs.Systems.Initialize;
 using Ecs.Systems.Update;
 using Ecs.Systems.Update.Collectables;
+using Ecs.Systems.Update.Drinks;
 using Leopotam.Ecs;
 using Zenject;
 
@@ -44,6 +45,17 @@ namespace Ecs
             Container.BindInterfacesAndSelfTo<DropItemSystem>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<StackInventoryHeightSystem>().AsSingle();
+            
+            
+            Container.BindInterfacesAndSelfTo<DrinkSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<DrinkProgressSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<FinishDrinkSystem>().AsSingle();
+            
+            
+            
+            
+            Container.BindInterfacesAndSelfTo<TweenSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<DestroySystem>().AsSingle();
         }
     }
 }
