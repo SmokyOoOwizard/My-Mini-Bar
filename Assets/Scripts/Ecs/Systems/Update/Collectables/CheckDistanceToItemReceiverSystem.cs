@@ -35,6 +35,9 @@ namespace Ecs.Systems.Update.Collectables
             foreach (var inventoryId in _stackInventoriesFilter)
             {
                 var inventory = _stackInventoriesFilter.Get1(inventoryId).Value;
+                if (inventory.Count == 0)
+                    continue;
+
                 var inventoryTransform = _stackInventoriesFilter.Get2(inventoryId).Value;
                 var inventoryPosition = inventoryTransform.position;
                 var packedItem = inventory.Peek();

@@ -17,7 +17,7 @@ namespace Ecs.Systems.Update.Collectables
             TransformRefComponent,
             PickUpDistanceComponent,
             MaxItemsComponent
-        > _playerFilter;
+        > _inventoriesFilter;
 
         private EcsFilter<
             TransformRefComponent,
@@ -33,38 +33,38 @@ namespace Ecs.Systems.Update.Collectables
 
         public void Run()
         {
-            if (_playerFilter.IsEmpty())
-                return;
-
-            var packedPlayer = _playerFilter.GetEntity(0).Pack();
-            var playerTransform = _playerFilter.Get2(0).Value;
-            var playerPosition = playerTransform.position;
-            var pickUpDistance = _playerFilter.Get3(0).Value;
-
-            var maxItems = _playerFilter.Get4(0).Value;
-            var inventory = _playerFilter.Get1(0).Value;
-            if (inventory.Count >= maxItems)
-                return;
-
-            var sqrPickUpDistance = pickUpDistance * pickUpDistance;
-
-            foreach (var slotId in _itemSlotsFilter)
+            foreach (var inventoryId in _inventoriesFilter)
             {
-                var transform = _itemSlotsFilter.Get1(slotId).Value;
-                var distance = (playerPosition - transform.position).sqrMagnitude;
+                var inventoryTransform = _inventoriesFilter.Get2(inventoryId).Value;
+                var inventoryPosition = inventoryTransform.position;
+                var pickUpDistance = _inventoriesFilter.Get3(inventoryId).Value;
 
-                if (distance > sqrPickUpDistance)
+                var maxItems = _inventoriesFilter.Get4(inventoryId).Value;
+                var inventory = _inventoriesFilter.Get1(inventoryId).Value;
+                if (inventory.Count >= maxItems)
                     continue;
 
-                var slotEntity = _itemSlotsFilter.GetEntity(slotId);
+                var sqrPickUpDistance = pickUpDistance * pickUpDistance;
 
-                var packedItem = _itemSlotsFilter.Get3(slotId).Value;
-                if (!packedItem.TryUnpack(_world, out var itemEntity))
-                    continue;
+                foreach (var slotId in _itemSlotsFilter)
+                {
+                    var transform = _itemSlotsFilter.Get1(slotId).Value;
+                    var distance = (inventoryPosition - transform.position).sqrMagnitude;
 
-                slotEntity.Del<ItemRefComponent>();
+                    if (distance > sqrPickUpDistance)
+                        continue;
 
-                itemEntity.Get<CollectItemToComponent>().Value = packedPlayer;
+                    var slotEntity = _itemSlotsFilter.GetEntity(slotId);
+
+                    var packedItem = _itemSlotsFilter.Get3(slotId).Value;
+                    if (!packedItem.TryUnpack(_world, out var itemEntity))
+                        continue;
+
+                    slotEntity.Del<ItemRefComponent>();
+
+                    var packedInventory = _inventoriesFilter.GetEntity(inventoryId).Pack();
+                    itemEntity.Get<CollectItemToComponent>().Value = packedInventory;
+                }
             }
         }
     }

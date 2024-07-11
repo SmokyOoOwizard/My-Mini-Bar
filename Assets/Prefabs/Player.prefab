@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 3
   PickUpDistance: 0
+  MaxStackSize: 5
   stackInventoryParent: {fileID: 4961026665699416117}
 --- !u!1 &6811819421635288146
 GameObject:
