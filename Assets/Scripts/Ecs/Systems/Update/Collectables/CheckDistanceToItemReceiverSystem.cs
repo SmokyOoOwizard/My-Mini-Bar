@@ -51,7 +51,7 @@ namespace Ecs.Systems.Update.Collectables
                 foreach (var slotId in _slotsFilter)
                 {
                     var filter = _slotsFilter.Get5(slotId).Value;
-                    if (filter != EItemFilter.Any || !filter.Match(itemType))
+                    if (filter != EItemFilter.Any && !filter.Match(itemType))
                         continue;
 
                     var slotTransform = _slotsFilter.Get1(slotId).Value;
