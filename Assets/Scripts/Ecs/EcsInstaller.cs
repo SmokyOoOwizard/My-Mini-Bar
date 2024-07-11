@@ -43,7 +43,7 @@ namespace Ecs
             Container.BindInterfacesAndSelfTo<ItemSpawnerSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<SpawnerFreeSlotsSystem>().AsSingle();
             
-            Container.BindInterfacesAndSelfTo<DropToItemSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CheckDistanceToItemReceiverSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<DropItemSystem>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<StackInventoryHeightSystem>().AsSingle();

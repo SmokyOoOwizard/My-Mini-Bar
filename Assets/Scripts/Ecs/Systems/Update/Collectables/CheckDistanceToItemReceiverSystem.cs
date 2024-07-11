@@ -8,7 +8,7 @@ using Leopotam.Ecs;
 
 namespace Ecs.Systems.Update.Collectables
 {
-    public class DropToItemSystem : IUpdateEcsSystem
+    public class CheckDistanceToItemReceiverSystem : IUpdateEcsSystem
     {
         private EcsFilter<
             StackInventoryComponent,
