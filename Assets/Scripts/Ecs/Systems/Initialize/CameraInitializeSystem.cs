@@ -25,7 +25,8 @@ namespace Ecs.Systems.Initialize
             var cameraEntity = _world.NewEntity();
 
             cameraEntity.Get<CameraComponent>();
-
+            cameraEntity.Get<ActiveComponent>();
+            cameraEntity.Get<TransformRefComponent>().Value = _cameraView.virtualCamera.transform;
             cameraEntity.Get<ViewRefComponent<CameraView>>().Value = _cameraView;
         }
     }

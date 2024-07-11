@@ -5,8 +5,7 @@ namespace Ecs.Views
 {
     public class CameraView : MonoBehaviour
     {
-        [SerializeField]
-        private CinemachineVirtualCamera virtualCamera;
+        public CinemachineVirtualCamera virtualCamera;
 
         public void SetTarget(Transform target)
         {

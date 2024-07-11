@@ -1,5 +1,9 @@
 ﻿using Core;
+using Ecs.Components;
+using Ecs.Components.Camera;
 using Ecs.Components.Input;
+using Ecs.Components.Refs;
+using Ecs.Utils;
 using Leopotam.Ecs;
 using SimpleUi.Abstracts;
 using UniRx;
@@ -10,13 +14,15 @@ namespace Ui.Joystick
 {
     public class JoystickController : UiController<JoystickView>, IUiInitializable
     {
-        private readonly EcsFilter<MoveDirectionComponent> _filter;
+        private readonly EcsFilter<MoveDirectionComponent> _moveFilter;
+        private readonly EcsFilter<ActiveComponent, CameraComponent, TransformRefComponent> _activeCameraFilter;
 
         private Vector2 _dragStart;
 
         public JoystickController(EcsWorld world)
         {
-            _filter = (EcsFilter<MoveDirectionComponent>)world.GetFilter(typeof(EcsFilter<MoveDirectionComponent>));
+            _moveFilter = world.GetFilter<EcsFilter<MoveDirectionComponent>>();
+            _activeCameraFilter = world.GetFilter<EcsFilter<ActiveComponent, CameraComponent, TransformRefComponent>>();
         }
 
         public void Initialize()
@@ -71,10 +77,22 @@ namespace Ui.Joystick
 
         private void UpdateInput(Vector2 dir)
         {
-            if (!_filter.IsEmpty())
+            var yAngle = 0f;
+            if (!_activeCameraFilter.IsEmpty())
             {
-                ref var moveComp = ref _filter.Get1(0);
-                moveComp.Value = dir;
+                var cameraTransform = _activeCameraFilter.Get3(0).Value;
+                yAngle = cameraTransform.rotation.eulerAngles.y;
+            }
+
+            if (!_moveFilter.IsEmpty())
+            {
+                ref var moveComp = ref _moveFilter.Get1(0);
+
+                var rotation = Quaternion.Euler(0, 0, yAngle + 90);
+
+                var finalDir = rotation * dir;
+
+                moveComp.Value = finalDir;
             }
         }
     }
