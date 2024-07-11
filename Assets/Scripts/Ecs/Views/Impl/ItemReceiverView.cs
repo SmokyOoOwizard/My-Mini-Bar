@@ -4,6 +4,7 @@ using Ecs.Components.Parameters;
 using Ecs.Components.Refs;
 using Ecs.Utils;
 using Leopotam.Ecs;
+using UnityEngine;
 
 namespace Ecs.Views.Impl
 {
@@ -11,10 +12,11 @@ namespace Ecs.Views.Impl
     {
         public float pickUpDistance = 0.5f;
         public EItemFilter filter = EItemFilter.Any;
+        public Transform slotTransform;
 
         public override void Init(EcsEntity entity, EcsWorld world)
         {
-            entity.Get<TransformRefComponent>().Value = transform;
+            entity.Get<TransformRefComponent>().Value = slotTransform;
             entity.Get<ItemSlotComponent>();
             entity.Get<PickUpDistanceComponent>();
             entity.Get<ReceiverComponent>();
