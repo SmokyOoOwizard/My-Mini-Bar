@@ -2,7 +2,7 @@
 
 namespace Ecs.Components
 {
-    public struct InInventoryComponent
+    public struct DropItemToComponent
     {
         public EntityId Value;
     }

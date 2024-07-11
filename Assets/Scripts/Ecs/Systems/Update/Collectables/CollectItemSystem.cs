@@ -36,8 +36,6 @@ namespace Ecs.Systems.Update.Collectables
 
                 itemEntity.Del<CollectItemToComponent>();
 
-                itemEntity.Get<InInventoryComponent>().Value = packedOwner;
-                
                 var inventory = ownerEntity.Get<StackInventoryComponent>().Value;
                 var packedItem = itemEntity.Pack();
                 inventory.Push(packedItem);

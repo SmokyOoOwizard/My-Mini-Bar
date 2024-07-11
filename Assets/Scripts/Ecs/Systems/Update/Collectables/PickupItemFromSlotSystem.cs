@@ -12,7 +12,11 @@ namespace Ecs.Systems.Update.Collectables
     {
         private readonly EcsWorld _world;
 
-        private EcsFilter<PlayerComponent, TransformRefComponent, PickUpDistanceComponent> _playerFilter;
+        private EcsFilter<
+            StackInventoryComponent,
+            TransformRefComponent,
+            PickUpDistanceComponent
+        > _playerFilter;
 
         private EcsFilter<
             TransformRefComponent,

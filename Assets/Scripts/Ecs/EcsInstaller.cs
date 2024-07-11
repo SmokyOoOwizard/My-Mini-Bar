@@ -43,7 +43,8 @@ namespace Ecs
             Container.BindInterfacesAndSelfTo<ItemSpawnerSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<SpawnerFreeSlotsSystem>().AsSingle();
             
-            Container.BindInterfacesAndSelfTo<ItemReceiverSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<DropToItemSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<DropItemSystem>().AsSingle();
         }
     }
 }
