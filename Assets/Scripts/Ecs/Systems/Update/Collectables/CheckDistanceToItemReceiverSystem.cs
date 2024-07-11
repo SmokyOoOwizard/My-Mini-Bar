@@ -10,6 +10,8 @@ namespace Ecs.Systems.Update.Collectables
 {
     public class CheckDistanceToItemReceiverSystem : IUpdateEcsSystem
     {
+        private readonly EcsWorld _world;
+
         private EcsFilter<
             StackInventoryComponent,
             TransformRefComponent
@@ -19,20 +21,37 @@ namespace Ecs.Systems.Update.Collectables
             TransformRefComponent,
             PickUpDistanceComponent,
             ItemSlotComponent,
-            ReceiverComponent
+            ReceiverComponent,
+            ItemFilterComponent
         >.Exclude<ItemRefComponent, DoneComponent> _slotsFilter;
+
+        public CheckDistanceToItemReceiverSystem(EcsWorld world)
+        {
+            _world = world;
+        }
 
         public void Run()
         {
             foreach (var inventoryId in _stackInventoriesFilter)
             {
+                var inventory = _stackInventoriesFilter.Get1(inventoryId).Value;
                 var inventoryTransform = _stackInventoriesFilter.Get2(inventoryId).Value;
                 var inventoryPosition = inventoryTransform.position;
+                var packedItem = inventory.Peek();
+
+                if (!packedItem.TryUnpack(_world, out var itemEntity))
+                    continue;
+
+                var itemType = itemEntity.Get<ItemTypeComponent>().Value;
 
                 foreach (var slotId in _slotsFilter)
                 {
+                    var filter = _slotsFilter.Get5(slotId).Value;
+                    if (filter != EItemFilter.Any || !filter.Match(itemType))
+                        continue;
+
                     var slotTransform = _slotsFilter.Get1(slotId).Value;
-                    
+
                     var pickUpDistance = _slotsFilter.Get2(slotId).Value;
                     var sqrDistance = pickUpDistance * pickUpDistance;
 

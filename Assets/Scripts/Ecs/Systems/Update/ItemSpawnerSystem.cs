@@ -61,7 +61,7 @@ namespace Ecs.Systems.Update
 
             itemEntity.Get<TransformRefComponent>().Value = item.transform;
             itemEntity.Get<HeightComponent>().Value = item.Height;
-            
+            itemEntity.Get<ItemTypeComponent>().Value = item.Type;
             
             return itemEntity;
         }

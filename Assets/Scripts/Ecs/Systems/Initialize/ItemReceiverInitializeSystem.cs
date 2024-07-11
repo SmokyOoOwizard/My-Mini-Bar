@@ -31,6 +31,7 @@ namespace Ecs.Systems.Initialize
                 slotEntity.Get<PickUpDistanceComponent>();
                 slotEntity.Get<ReceiverComponent>();
                 slotEntity.Get<PickUpDistanceComponent>().Value = receiverView.pickUpDistance;
+                slotEntity.Get<ItemFilterComponent>().Value = receiverView.filter;
             }
         }
     }
