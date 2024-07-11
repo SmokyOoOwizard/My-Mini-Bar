@@ -58,6 +58,7 @@ namespace Ecs.Systems.Update.Collectables
                 tween.onComplete = () => itemTransform.SetParent(stackParent);
                 tween.SetAutoKill(true);
 
+                entity.Get<TweenComponent>().Value = tween;
                 entity.Del<DropItemToComponent>();
             }
         }

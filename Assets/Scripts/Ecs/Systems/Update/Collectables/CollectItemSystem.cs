@@ -51,6 +51,8 @@ namespace Ecs.Systems.Update.Collectables
                 var tween = itemTransform.DOMoveInTargetLocalSpace(stackParent, itemOffset, 1);
                 tween.onComplete = () => itemTransform.SetParent(stackParent);
                 tween.SetAutoKill(true);
+                
+                itemEntity.Get<TweenComponent>().Value = tween;
 
                 var itemHeight = _itemsFilter.Get3(itemId).Value;
                 stackHeight.Value += itemHeight;
