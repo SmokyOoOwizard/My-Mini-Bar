@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Ecs.Components
+namespace Ecs.Components.Inventories
 {
     public struct StackInventoryParentComponent
     {

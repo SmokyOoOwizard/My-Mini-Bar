@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using Ecs.Components;
+using Ecs.Components.Inventories;
 using Ecs.Components.Items;
 using Ecs.Components.Refs;
 using Ecs.Core;

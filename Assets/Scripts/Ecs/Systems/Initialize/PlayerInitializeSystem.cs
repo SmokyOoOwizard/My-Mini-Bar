@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Ecs.Components;
 using Ecs.Components.Camera;
+using Ecs.Components.Inventories;
 using Ecs.Components.Parameters;
 using Ecs.Components.Refs;
 using Ecs.Utils;

@@ -2,7 +2,7 @@
 using Ecs.Utils;
 using Leopotam.Ecs;
 
-namespace Ecs.Components
+namespace Ecs.Components.Inventories
 {
     public struct StackInventoryComponent : IEcsAutoReset<StackInventoryComponent>
     {
