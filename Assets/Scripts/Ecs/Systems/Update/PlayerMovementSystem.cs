@@ -8,27 +8,27 @@ using UnityEngine;
 
 namespace Ecs.Systems.Update
 {
-    public class PlayerMovementSystem : IUpdateEcsSystem
+    public class PlayerMovementSystem : IFixedUpdateEcsSystem
     {
         private EcsFilter<MoveDirectionComponent> _moveFilter;
-        private EcsFilter<TransformRefComponent, SpeedComponent, PlayerComponent> _playerFilter;
-        
+        private EcsFilter<ViewRefComponent<CharacterController>, SpeedComponent, PlayerComponent> _playerFilter;
+
         public void Run()
         {
             if (_moveFilter.IsEmpty())
                 return;
-            
+
             var moveDirection = _moveFilter.Get1(0);
-            
-            foreach (var entity in _playerFilter)
+
+            foreach (var entityId in _playerFilter)
             {
-                var transform = _playerFilter.Get1(entity).Value;
+                var speed = _playerFilter.Get2(entityId).Value;
 
-                var speed = _playerFilter.Get2(entity).Value;
-                
-                var delta= moveDirection.Value * Time.deltaTime * speed;
+                var delta = moveDirection.Value * Time.deltaTime * speed;
 
-                transform.position += new Vector3(delta.x, 0, delta.y);
+                var cc = _playerFilter.Get1(entityId).Value;
+
+                cc.Move(new Vector3(delta.x, 0, delta.y));
             }
         }
     }

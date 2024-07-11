@@ -30,6 +30,7 @@ namespace Ecs
         private void BindUpdateSystems()
         {
             Container.BindInterfacesAndSelfTo<PlayerMovementSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PlayerRotationSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<CameraTargetSystem>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<PickupItemFromSlotSystem>().AsSingle();

@@ -12,9 +12,11 @@ namespace Ecs.Views.Impl
     public class PlayerView : AEntityView
     {
         public float Speed;
+        public float rotationSpeed;
         public float PickUpDistance;
         public int MaxStackSize;
         public Transform stackInventoryParent;
+        public CharacterController characterController;
 
         public override void Init(EcsEntity entity, EcsWorld world)
         {
@@ -38,6 +40,10 @@ namespace Ecs.Views.Impl
 
             entity.Get<StackInventoryParentComponent>().Value = stackInventoryParent;
             entity.Get<StackInventoryHeightComponent>();
+
+            entity.Get<RotationSpeedComponent>().Value = rotationSpeed;
+
+            entity.Get<ViewRefComponent<CharacterController>>().Value = characterController;
         }
     }
 }
