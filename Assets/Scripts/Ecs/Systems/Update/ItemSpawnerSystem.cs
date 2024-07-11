@@ -60,7 +60,6 @@ namespace Ecs.Systems.Update
             item.gameObject.Link(itemEntity);
 
             itemEntity.Get<TransformRefComponent>().Value = item.transform;
-            itemEntity.Get<InSpawnerComponent>();
             itemEntity.Get<HeightComponent>().Value = item.Height;
             
             

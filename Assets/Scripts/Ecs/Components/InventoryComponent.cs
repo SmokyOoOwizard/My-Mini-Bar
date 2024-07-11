@@ -4,11 +4,11 @@ using Leopotam.Ecs;
 
 namespace Ecs.Components
 {
-    public struct InventoryComponent<T> : IEcsAutoReset<InventoryComponent<T>> where T : IEnumerable<EntityId>, new()
+    public struct StackInventoryComponent : IEcsAutoReset<StackInventoryComponent>
     {
-        public T Value;
+        public Stack<EntityId> Value;
 
-        public void AutoReset(ref InventoryComponent<T> c)
+        public void AutoReset(ref StackInventoryComponent c)
         {
             c.Value = new();
         }
