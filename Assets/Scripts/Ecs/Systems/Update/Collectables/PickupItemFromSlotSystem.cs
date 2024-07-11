@@ -17,7 +17,8 @@ namespace Ecs.Systems.Update.Collectables
         private EcsFilter<
             TransformRefComponent,
             ItemSlotComponent,
-            ItemRefComponent
+            ItemRefComponent,
+            SenderComponent
         > _itemSlotsFilter;
 
         public PickupItemFromSlotSystem(EcsWorld world)

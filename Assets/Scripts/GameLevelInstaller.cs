@@ -11,6 +11,8 @@ public class GameLevelInstaller : MonoInstaller<GameLevelInstaller>
     
     [SerializeField]
     private ItemSpawnerView[] itemSpawnerViews;
+    [SerializeField]
+    private ItemReceiverSlotView[] itemReceiverViews;
 
     public override void InstallBindings()
     {
@@ -18,5 +20,6 @@ public class GameLevelInstaller : MonoInstaller<GameLevelInstaller>
         Container.BindInstance(camera).AsSingle();
         
         Container.BindInstances(itemSpawnerViews);
+        Container.BindInstances(itemReceiverViews);
     }
 }

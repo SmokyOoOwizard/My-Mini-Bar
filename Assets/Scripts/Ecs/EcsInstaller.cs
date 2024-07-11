@@ -26,6 +26,7 @@ namespace Ecs
             Container.BindInterfacesAndSelfTo<PlayerInitializeSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<CameraInitializeSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<ItemSpawnerInitializeSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ItemReceiverInitializeSystem>().AsSingle();
         }
 
         private void BindUpdateSystems()
@@ -41,6 +42,8 @@ namespace Ecs
             
             Container.BindInterfacesAndSelfTo<ItemSpawnerSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<SpawnerFreeSlotsSystem>().AsSingle();
+            
+            Container.BindInterfacesAndSelfTo<ItemReceiverSystem>().AsSingle();
         }
     }
 }

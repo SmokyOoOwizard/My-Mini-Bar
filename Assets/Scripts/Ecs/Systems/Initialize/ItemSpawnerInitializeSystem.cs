@@ -48,6 +48,7 @@ namespace Ecs.Systems.Initialize
                     
                     slotEntity.Get<TransformRefComponent>().Value = slotView.transform;
                     slotEntity.Get<ItemSlotComponent>();
+                    slotEntity.Get<SenderComponent>();
                     slotEntity.Get<SpawnPointComponent>().Value = slotView.spawnPoint;
 
                     var packedSlot = slotEntity.Pack();
