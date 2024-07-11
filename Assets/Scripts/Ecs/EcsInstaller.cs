@@ -45,6 +45,8 @@ namespace Ecs
             
             Container.BindInterfacesAndSelfTo<DropToItemSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<DropItemSystem>().AsSingle();
+            
+            Container.BindInterfacesAndSelfTo<StackInventoryHeightSystem>().AsSingle();
         }
     }
 }
