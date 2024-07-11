@@ -40,6 +40,8 @@ namespace Ecs.Systems.Initialize
 
             playerEntity.Get<StackInventoryComponent>();
             
+            playerEntity.Get<MaxItemsComponent>().Value = _playerView.MaxStackSize;
+            
             playerEntity.Get<PickUpDistanceComponent>().Value = _playerView.PickUpDistance;
 
             playerEntity.Get<StackInventoryParentComponent>().Value = _playerView.stackInventoryParent;

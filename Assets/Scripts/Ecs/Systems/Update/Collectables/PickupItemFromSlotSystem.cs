@@ -15,7 +15,8 @@ namespace Ecs.Systems.Update.Collectables
         private EcsFilter<
             StackInventoryComponent,
             TransformRefComponent,
-            PickUpDistanceComponent
+            PickUpDistanceComponent,
+            MaxItemsComponent
         > _playerFilter;
 
         private EcsFilter<
@@ -39,6 +40,11 @@ namespace Ecs.Systems.Update.Collectables
             var playerTransform = _playerFilter.Get2(0).Value;
             var playerPosition = playerTransform.position;
             var pickUpDistance = _playerFilter.Get3(0).Value;
+
+            var maxItems = _playerFilter.Get4(0).Value;
+            var inventory = _playerFilter.Get1(0).Value;
+            if (inventory.Count >= maxItems)
+                return;
 
             var sqrPickUpDistance = pickUpDistance * pickUpDistance;
 
