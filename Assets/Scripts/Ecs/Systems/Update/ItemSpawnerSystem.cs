@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Ecs.Components;
-using Ecs.Components.Collectables;
+﻿using Ecs.Components;
+using Ecs.Components.Items;
 using Ecs.Components.Parameters;
 using Ecs.Components.Refs;
 using Ecs.Components.Spawner;
+using Ecs.Components.Timer;
 using Ecs.Core;
 using Ecs.Utils;
 using Ecs.Views;
@@ -18,11 +18,10 @@ namespace Ecs.Systems.Update
 
         private EcsFilter<
             ItemSpawnerComponent,
-            SpawnPointComponent,
             PrefabComponent<ItemView>,
             DoneComponent,
-            InventoryComponent<List<EntityId>>
-        > _spawnerFilter;
+            ItemFreeSlotsComponent
+        >.Exclude<FullComponent> _spawnerFilter;
 
         public ItemSpawnerSystem(EcsWorld world)
         {
@@ -31,32 +30,41 @@ namespace Ecs.Systems.Update
 
         public void Run()
         {
-            foreach (var entityId in _spawnerFilter)
+            foreach (var spawnerId in _spawnerFilter)
             {
-                var inventory = _spawnerFilter.Get5(entityId).Value;
-                if (inventory.Count > 0)
+                var slots = _spawnerFilter.Get4(spawnerId).Value;
+                if (slots.Count == 0)
                     continue;
 
-                var prefab = _spawnerFilter.Get3(entityId).Value;
+                var packedSlot = slots[^1];
+                if (!packedSlot.TryUnpack(_world, out var slotEntity))
+                    continue;
 
-                var spawnPoint = _spawnerFilter.Get2(entityId).Value;
-
-                var item = Object.Instantiate(prefab, spawnPoint.position, Quaternion.identity);
-
-                var itemEntity = _world.NewEntity();
-                item.gameObject.Link(itemEntity);
+                var prefab = _spawnerFilter.Get2(spawnerId).Value;
+                var spawnPoint = slotEntity.Get<SpawnPointComponent>().Value;
                 
-                var packedItem = itemEntity.Pack();
-                inventory.Add(packedItem);
+                var itemEntity = SpawnItem(prefab, spawnPoint);
 
-                itemEntity.Get<TransformRefComponent>().Value = item.transform;
-                itemEntity.Get<CollectableComponent>();
-                itemEntity.Get<InSpawnerComponent>();
-                itemEntity.Get<HeightComponent>().Value = item.Height;
+                slotEntity.Get<ItemRefComponent>().Value = itemEntity.Pack();
 
-                var spawner = _spawnerFilter.GetEntity(entityId);
-                itemEntity.Get<SpawnerIdComponent>().Value = spawner.Pack();
+                var spawnerEntity = _spawnerFilter.GetEntity(spawnerId);
+                spawnerEntity.Get<ResetTimerComponent>();
             }
+        }
+
+        private EcsEntity SpawnItem(ItemView prefab, Transform spawnPoint)
+        {
+            var item = Object.Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+
+            var itemEntity = _world.NewEntity();
+            item.gameObject.Link(itemEntity);
+
+            itemEntity.Get<TransformRefComponent>().Value = item.transform;
+            itemEntity.Get<InSpawnerComponent>();
+            itemEntity.Get<HeightComponent>().Value = item.Height;
+            
+            
+            return itemEntity;
         }
     }
 }

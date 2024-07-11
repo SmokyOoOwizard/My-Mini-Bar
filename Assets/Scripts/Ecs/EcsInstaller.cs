@@ -33,14 +33,14 @@ namespace Ecs
             Container.BindInterfacesAndSelfTo<PlayerMovementSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<CameraTargetSystem>().AsSingle();
             
-            Container.BindInterfacesAndSelfTo<CollectablePickupSystem>().AsSingle();
-            Container.BindInterfacesAndSelfTo<CollectFromSpawnerPickupSystem>().AsSingle();
-            Container.BindInterfacesAndSelfTo<CollectCollectableSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PickupItemFromSlotSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CollectItemSystem>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<ResetTimerSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<TimerSystem>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<ItemSpawnerSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SpawnerFreeSlotsSystem>().AsSingle();
         }
     }
 }

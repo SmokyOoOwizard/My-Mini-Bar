@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Ecs.Components;
+﻿using Ecs.Components;
+using Ecs.Components.Items;
 using Ecs.Components.Refs;
 using Ecs.Components.Spawner;
 using Ecs.Components.Timer;
@@ -27,21 +27,34 @@ namespace Ecs.Systems.Initialize
         {
             foreach (var spawnerView in _itemSpawnerViews)
             {
-                var item = _world.NewEntity();
+                var spawnerEntity = _world.NewEntity();
 
-                item.Get<ItemSpawnerComponent>();
+                spawnerEntity.Get<ItemSpawnerComponent>();
 
-                item.Get<TransformRefComponent>().Value = spawnerView.transform;
+                spawnerEntity.Get<TransformRefComponent>().Value = spawnerView.transform;
 
-                item.Get<TimerComponent>().Value = spawnerView.Timer;
+                spawnerEntity.Get<TimerComponent>().Value = spawnerView.timer;
 
-                item.Get<TimerLeftComponent>().Value = spawnerView.Timer;
+                spawnerEntity.Get<TimerLeftComponent>().Value = spawnerView.timer;
 
-                item.Get<SpawnPointComponent>().Value = spawnerView.spawnPoint;
-                
-                item.Get<PrefabComponent<ItemView>>().Value = spawnerView.itemPrefab;
+                spawnerEntity.Get<PrefabComponent<ItemView>>().Value = spawnerView.itemPrefab;
 
-                item.Get<InventoryComponent<List<EntityId>>>();
+                var slotsRef = spawnerEntity.Get<ItemSlotsComponent>().Value;
+                var freeSlotsRef = spawnerEntity.Get<ItemFreeSlotsComponent>().Value;
+
+                foreach (var slotView in spawnerView.slots)
+                {
+                    var slotEntity = _world.NewEntity();
+                    
+                    slotEntity.Get<TransformRefComponent>().Value = slotView.transform;
+                    slotEntity.Get<ItemSlotComponent>();
+                    slotEntity.Get<SpawnPointComponent>().Value = slotView.spawnPoint;
+
+                    var packedSlot = slotEntity.Pack();
+
+                    slotsRef.Add(packedSlot);
+                    freeSlotsRef.Add(packedSlot);
+                }
             }
         }
     }

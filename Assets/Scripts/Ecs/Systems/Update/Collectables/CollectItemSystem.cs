@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using DG.Tweening;
 using Ecs.Components;
-using Ecs.Components.Collectables;
 using Ecs.Components.Parameters;
 using Ecs.Components.Refs;
 using Ecs.Core;
@@ -12,7 +11,7 @@ using Utils.Dotween;
 
 namespace Ecs.Systems.Update.Collectables
 {
-    public class CollectCollectableSystem : IUpdateEcsSystem
+    public class CollectItemSystem : IUpdateEcsSystem
     {
         private EcsFilter<
             PlayerComponent,
@@ -22,7 +21,6 @@ namespace Ecs.Systems.Update.Collectables
         > _playerFilter;
 
         private EcsFilter<
-            CollectableComponent,
             CollectComponent,
             TransformRefComponent,
             HeightComponent
@@ -46,9 +44,8 @@ namespace Ecs.Systems.Update.Collectables
                 inventory.Push(packedItem);
 
                 itemEntity.Del<CollectComponent>();
-                itemEntity.Get<CollectedComponent>();
 
-                var itemTransform = _itemsFilter.Get3(itemId).Value;
+                var itemTransform = _itemsFilter.Get2(itemId).Value;
 
                 var itemOffset = new Vector3(0, stackHeight, 0);
 
@@ -56,7 +53,7 @@ namespace Ecs.Systems.Update.Collectables
                 tween.onComplete = () => itemTransform.SetParent(stackParent);
                 tween.SetAutoKill(true);
 
-                var itemHeight = _itemsFilter.Get4(itemId).Value;
+                var itemHeight = _itemsFilter.Get3(itemId).Value;
                 stackHeight += itemHeight;
             }
         }

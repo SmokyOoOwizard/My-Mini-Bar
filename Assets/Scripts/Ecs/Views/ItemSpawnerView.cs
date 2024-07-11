@@ -4,9 +4,9 @@ namespace Ecs.Views
 {
     public class ItemSpawnerView : MonoBehaviour
     {
-        public float Timer;
+        public float timer;
         
-        public Transform spawnPoint;
+        public ItemSpawnerSlot[] slots;
         
         public ItemView itemPrefab;
     }
