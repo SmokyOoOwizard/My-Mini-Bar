@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e97b2bb4404b3689a134d27d496aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 10
+  timer: 5
   slots:
   - {fileID: 6358850878260272586}
   - {fileID: 5331633988619206128}
-  itemPrefab: {fileID: 2662830816714656021, guid: c5ca3213ffccc404290b40c34d0d7ce1,
+  itemPrefab: {fileID: 5821778154716032083, guid: 8a500b3963a797542a3f93af5a649ebd,
     type: 3}
 --- !u!1 &5133190666114566768
 GameObject:
