@@ -130,6 +130,8 @@ MonoBehaviour:
     type: 3}
   inventoryView: {fileID: 6410427749340271130, guid: a5f044feabb939a4e840578e5247f9ec,
     type: 3}
+  trashCanToolTipsView: {fileID: 6031012399040107419, guid: 516324d3eb570064ca16dde0d767fce8,
+    type: 3}
 --- !u!114 &6118119381890265774
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using Ui.DrinkerToolTip;
 using Ui.Inventory;
 using Ui.ItemSpawnerToolTip;
 using Ui.Joystick;
+using Ui.TrashCanToolTip;
 using Ui.Windows;
 using UnityEngine;
 using Zenject;
@@ -24,6 +25,8 @@ namespace Ui
         private DrinkerToolTipsView drinkerToolTipsView;
         [SerializeField]
         private InventoryView inventoryView;
+        [SerializeField]
+        private TrashCanToolTipsView trashCanToolTipsView;
 
         public override void InstallBindings()
         {
@@ -53,6 +56,7 @@ namespace Ui
             Container.BindUiView<ItemSpawnerToolTipsController, ItemSpawnerToolTipsView>(spawnerToolTipsView, canvasTransform);
             Container.BindUiView<DrinkerToolTipsController, DrinkerToolTipsView>(drinkerToolTipsView, canvasTransform);
             Container.BindUiView<InventoryController, InventoryView>(inventoryView, canvasTransform);
+            Container.BindUiView<TrashCanToolTipsController, TrashCanToolTipsView>(trashCanToolTipsView, canvasTransform);
         }
     }
 }
