@@ -1,4 +1,5 @@
 ﻿using SimpleUi;
+using Ui.ItemSpawnerToolTip;
 using Ui.Joystick;
 
 namespace Ui.Windows
@@ -9,6 +10,7 @@ namespace Ui.Windows
 
         protected override void AddControllers()
         {
+            AddController<ItemSpawnerToolTipsController>();
             AddController<JoystickController>();
         }
     }

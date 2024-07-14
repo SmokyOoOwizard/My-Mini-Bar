@@ -807,7 +807,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: ZEN_SIGNALS_ADD_UNIRX;DOTWEEN
+    Android: ZEN_SIGNALS_ADD_UNIRX;DOTWEEN;LEOECS_FILTER_EVENTS
     EmbeddedLinux: DOTWEEN
     GameCoreScarlett: DOTWEEN
     GameCoreXboxOne: DOTWEEN

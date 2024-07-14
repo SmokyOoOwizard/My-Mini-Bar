@@ -1,4 +1,5 @@
 ﻿using Ecs.Game.Components;
+using Ecs.Game.Components.Items;
 using Ecs.Game.Components.Refs;
 using Ecs.Game.Components.Spawner;
 using Ecs.Game.Components.Timer;
@@ -26,6 +27,8 @@ namespace Ecs.Views.Impl
             entity.Get<TimerLeftComponent>().Value = timer;
 
             entity.Get<PrefabComponent<ItemView>>().Value = itemPrefab;
+            
+            entity.Get<ItemTypeComponent>().Value = itemPrefab.Type;
 
             var slotsRef = entity.Get<ItemSlotsComponent>().Value;
             var freeSlotsRef = entity.Get<ItemFreeSlotsComponent>().Value;
