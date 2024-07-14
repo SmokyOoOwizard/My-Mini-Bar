@@ -30,7 +30,6 @@ namespace Ecs
             BindSystem<CameraTargetSystem>();
 
             BindSystem<PickupItemFromSlotSystem>();
-            BindSystem<CollectItemSystem>();
 
             BindSystem<ResetTimerSystem>();
             BindSystem<TimerSystem>();
@@ -39,7 +38,6 @@ namespace Ecs
             BindSystem<SpawnerFreeSlotsSystem>();
 
             BindSystem<CheckDistanceToItemReceiverSystem>();
-            BindSystem<DropItemSystem>();
 
             BindSystem<StackInventoryHeightSystem>();
 

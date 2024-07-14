@@ -9,6 +9,7 @@ namespace Ecs
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<GameEcsWorld>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<ActionEcsWorld>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<EcsBootstrap>().AsSingle().NonLazy();
         }
     }

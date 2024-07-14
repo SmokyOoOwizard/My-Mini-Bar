@@ -4,6 +4,7 @@ namespace Ecs.Components
 {
     public struct CollectItemToComponent
     {
-        public EntityId Value;
+        public EntityId Item;
+        public EntityId TargetInventory;
     }
 }

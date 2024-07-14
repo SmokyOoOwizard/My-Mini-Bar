@@ -13,6 +13,7 @@ namespace Ecs.Systems.Update.Collectables
     public class CheckDistanceToItemReceiverSystem : IUpdateEcsSystem
     {
         private readonly GameEcsWorld _world;
+        private readonly ActionEcsWorld _actionWorld;
 
         private EcsFilter<
             StackInventoryComponent,
@@ -27,9 +28,13 @@ namespace Ecs.Systems.Update.Collectables
             ItemFilterComponent
         >.Exclude<ItemRefComponent, DoneComponent> _slotsFilter;
 
-        public CheckDistanceToItemReceiverSystem(GameEcsWorld world)
+        public CheckDistanceToItemReceiverSystem(
+            GameEcsWorld world,
+            ActionEcsWorld actionWorld
+        )
         {
             _world = world;
+            _actionWorld = actionWorld;
         }
 
         public void Run()
@@ -66,7 +71,10 @@ namespace Ecs.Systems.Update.Collectables
 
                     var inventoryEntity = _stackInventoriesFilter.GetEntity(inventoryId);
                     var slotEntity = _slotsFilter.GetEntity(slotId);
-                    inventoryEntity.Get<DropItemToComponent>().Value = slotEntity.Pack();
+
+                    var packedInventory = inventoryEntity.Pack();
+                    var packedSlot = slotEntity.Pack();
+                    _actionWorld.DropItemTo(packedInventory, packedSlot);
                     break;
                 }
             }

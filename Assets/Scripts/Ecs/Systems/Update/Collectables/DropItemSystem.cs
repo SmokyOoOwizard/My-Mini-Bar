@@ -1,5 +1,4 @@
-﻿using DG.Tweening;
-using Ecs.Components;
+﻿using Ecs.Components;
 using Ecs.Components.Inventories;
 using Ecs.Components.Items;
 using Ecs.Components.Refs;
@@ -8,59 +7,56 @@ using Ecs.Utils;
 using Ecs.Worlds;
 using Leopotam.Ecs;
 using UnityEngine;
-using Utils.Dotween;
 
 namespace Ecs.Systems.Update.Collectables
 {
     public class DropItemSystem : IUpdateEcsSystem
     {
         private readonly GameEcsWorld _world;
+        private readonly ActionEcsWorld _actionWorld;
 
         private EcsFilter<
-            DropItemToComponent,
-            StackInventoryComponent
-        > _inventoriesFilter;
+            DropItemToComponent
+        > _actionsFilter;
 
-        public DropItemSystem(GameEcsWorld world)
+        public DropItemSystem(
+            GameEcsWorld world,
+            ActionEcsWorld actionWorld
+        )
         {
             _world = world;
+            _actionWorld = actionWorld;
         }
 
         public void Run()
         {
-            foreach (var inventoryId in _inventoriesFilter)
+            foreach (var actionId in _actionsFilter)
             {
-                var entity = _inventoriesFilter.GetEntity(inventoryId);
+                var action = _actionsFilter.Get1(actionId);
+                var packedInventory = action.Inventory;
+                if (!packedInventory.TryUnpack(_world, out var inventoryEntity))
+                    continue;
 
-                var inventory = _inventoriesFilter.Get2(inventoryId).Value;
+                var packedSlot = action.Slot;
+                if (!packedSlot.TryUnpack(_world, out var slotEntity))
+                    continue;
+
+                var inventory = inventoryEntity.Get<StackInventoryComponent>().Value;
                 if (inventory.Count == 0)
                     continue;
 
-
-                var packedReceiver = _inventoriesFilter.Get1(inventoryId).Value;
-                if (!packedReceiver.TryUnpack(_world, out var receiverEntity))
-                    continue;
-
-                if (receiverEntity.Has<ItemRefComponent>())
+                if (slotEntity.Has<ItemRefComponent>())
                     continue;
 
                 var packedItem = inventory.Pop();
 
-                receiverEntity.Get<ItemRefComponent>().Value = packedItem;
+                slotEntity.Get<ItemRefComponent>().Value = packedItem;
 
-                entity.Get<InventoryUpdatedComponent>();
+                inventoryEntity.Get<InventoryUpdatedComponent>();
 
-                if (!packedItem.TryUnpack(_world, out var itemEntity))
-                    continue;
+                var stackParent = slotEntity.Get<TransformRefComponent>().Value;
 
-                var itemTransform = itemEntity.Get<TransformRefComponent>().Value;
-                var stackParent = receiverEntity.Get<TransformRefComponent>().Value;
-                var tween = itemTransform.DOMoveInTargetLocalSpace(stackParent, Vector3.zero, 1);
-                tween.onComplete = () => itemTransform.SetParent(stackParent);
-                tween.SetAutoKill(true);
-
-                entity.Get<TweenComponent>().Value = tween;
-                entity.Del<DropItemToComponent>();
+                _actionWorld.FlyItemTo(packedItem, stackParent, Vector3.zero);
             }
         }
     }

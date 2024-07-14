@@ -4,6 +4,7 @@ namespace Ecs.Components
 {
     public struct DropItemToComponent
     {
-        public EntityId Value;
+        public EntityId Slot;
+        public EntityId Inventory;
     }
 }

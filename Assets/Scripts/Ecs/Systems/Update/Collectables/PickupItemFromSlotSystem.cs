@@ -12,7 +12,7 @@ namespace Ecs.Systems.Update.Collectables
 {
     public class PickupItemFromSlotSystem : IUpdateEcsSystem
     {
-        private readonly GameEcsWorld _world;
+        private readonly ActionEcsWorld _actionWorld;
 
         private EcsFilter<
             StackInventoryComponent,
@@ -28,9 +28,11 @@ namespace Ecs.Systems.Update.Collectables
             SenderComponent
         > _itemSlotsFilter;
 
-        public PickupItemFromSlotSystem(GameEcsWorld world)
+        public PickupItemFromSlotSystem(
+            ActionEcsWorld actionWorld
+        )
         {
-            _world = world;
+            _actionWorld = actionWorld;
         }
 
         public void Run()
@@ -59,13 +61,11 @@ namespace Ecs.Systems.Update.Collectables
                     var slotEntity = _itemSlotsFilter.GetEntity(slotId);
 
                     var packedItem = _itemSlotsFilter.Get3(slotId).Value;
-                    if (!packedItem.TryUnpack(_world, out var itemEntity))
-                        continue;
-
+                    
                     slotEntity.Del<ItemRefComponent>();
-
+                    
                     var packedInventory = _inventoriesFilter.GetEntity(inventoryId).Pack();
-                    itemEntity.Get<CollectItemToComponent>().Value = packedInventory;
+                    _actionWorld.CollectItemTo(packedItem, packedInventory);
                 }
             }
         }
