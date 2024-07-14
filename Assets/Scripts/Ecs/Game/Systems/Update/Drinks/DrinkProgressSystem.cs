@@ -1,5 +1,6 @@
 ﻿using Ecs.Core;
 using Ecs.Game.Components;
+using Ecs.Game.Components.Drinker;
 using Ecs.Game.Components.Items;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -11,7 +12,8 @@ namespace Ecs.Game.Systems.Update.Drinks
         private EcsFilter<
             DrinkerComponent,
             DrinkProgressComponent,
-            ItemRefComponent
+            ItemRefComponent,
+            PickedUpComponent
         > _drinkersFilter;
 
         public void Run()

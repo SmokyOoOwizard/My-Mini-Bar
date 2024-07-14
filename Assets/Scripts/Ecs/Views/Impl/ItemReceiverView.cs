@@ -10,9 +10,14 @@ namespace Ecs.Views.Impl
 {
     public class ItemReceiverSlotView : AEntityView
     {
-        public float pickUpDistance = 0.5f;
-        public EItemFilter filter = EItemFilter.Any;
-        public Transform slotTransform;
+        [SerializeField]
+        protected float pickUpDistance = 0.5f;
+
+        [SerializeField]
+        protected EItemFilter filter = EItemFilter.Any;
+
+        [SerializeField]
+        protected Transform slotTransform;
 
         public override void Init(EcsEntity entity, EcsWorld world)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using Ecs.Core;
 using Ecs.Game.Components;
+using Ecs.Game.Components.Drinker;
 using Ecs.Game.Components.Items;
 using Ecs.Utils;
 using Ecs.Worlds;
@@ -17,7 +18,8 @@ namespace Ecs.Game.Systems.Update.Drinks
             DrinkerComponent,
             DrinkProgressComponent,
             DrinkDurationComponent,
-            ItemRefComponent
+            ItemRefComponent,
+            DrinkedComponent
         > _drinkersFilter;
 
         public FinishDrinkSystem(GameEcsWorld world)
@@ -31,10 +33,10 @@ namespace Ecs.Game.Systems.Update.Drinks
             {
                 var drinkerEntity = _drinkersFilter.GetEntity(drinkerId);
 
-                var drinkProgress = drinkerEntity.Get<DrinkProgressComponent>();
-                var drinkDuration = drinkerEntity.Get<DrinkDurationComponent>();
+                var drinkProgress = _drinkersFilter.Get2(drinkerId).Value;
+                var drinkDuration = _drinkersFilter.Get3(drinkerId).Value;
 
-                if (drinkProgress.Value < drinkDuration.Value)
+                if (drinkProgress < drinkDuration)
                     continue;
 
                 var packedItem = _drinkersFilter.Get4(drinkerId).Value;

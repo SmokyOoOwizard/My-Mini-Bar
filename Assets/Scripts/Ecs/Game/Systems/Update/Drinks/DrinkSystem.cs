@@ -1,7 +1,10 @@
 ﻿using Ecs.Core;
 using Ecs.Game.Components;
+using Ecs.Game.Components.Drinker;
 using Ecs.Game.Components.Items;
+using Ecs.Game.Components.Refs;
 using Ecs.Utils;
+using Ecs.Views.Impl;
 using Ecs.Worlds;
 using Leopotam.Ecs;
 
@@ -13,7 +16,8 @@ namespace Ecs.Game.Systems.Update.Drinks
 
         private EcsFilter<
             DrinkerComponent,
-            ItemRefComponent
+            ItemRefComponent,
+            ViewRefComponent<DrinkerView>
         >.Exclude<DrinkProgressComponent> _drinkersFilter;
 
         public DrinkSystem(GameEcsWorld world)
@@ -34,6 +38,11 @@ namespace Ecs.Game.Systems.Update.Drinks
                     continue;
 
                 drinkerEntity.Get<DrinkProgressComponent>();
+
+                var view = _drinkersFilter.Get3(drinkerId).Value;
+                
+                view.SetPickUp();
+                view.SetDrink();
             }
         }
     }
