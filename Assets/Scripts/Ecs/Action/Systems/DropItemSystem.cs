@@ -1,4 +1,5 @@
-﻿using Ecs.Core;
+﻿using Ecs.Action.Components;
+using Ecs.Core;
 using Ecs.Game.Components;
 using Ecs.Game.Components.Inventories;
 using Ecs.Game.Components.Items;

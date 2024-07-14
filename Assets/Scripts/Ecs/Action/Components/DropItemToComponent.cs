@@ -1,6 +1,6 @@
 ﻿using Ecs.Utils;
 
-namespace Ecs.Game.Components
+namespace Ecs.Action.Components
 {
     public struct DropItemToComponent
     {
