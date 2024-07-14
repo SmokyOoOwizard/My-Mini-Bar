@@ -1,4 +1,4 @@
-﻿using Ecs.Components;
+﻿using Ecs.Game.Components;
 using Leopotam.Ecs;
 
 namespace Ecs.Views.Impl

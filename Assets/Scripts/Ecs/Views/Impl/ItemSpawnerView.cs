@@ -1,7 +1,7 @@
-﻿using Ecs.Components;
-using Ecs.Components.Refs;
-using Ecs.Components.Spawner;
-using Ecs.Components.Timer;
+﻿using Ecs.Game.Components;
+using Ecs.Game.Components.Refs;
+using Ecs.Game.Components.Spawner;
+using Ecs.Game.Components.Timer;
 using Ecs.Utils;
 using Leopotam.Ecs;
 

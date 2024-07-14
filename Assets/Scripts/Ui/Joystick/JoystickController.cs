@@ -1,9 +1,9 @@
 ﻿using Core;
-using Ecs.Components;
-using Ecs.Components.Camera;
-using Ecs.Components.Input;
-using Ecs.Components.Refs;
 using Ecs.Core;
+using Ecs.Game.Components;
+using Ecs.Game.Components.Camera;
+using Ecs.Game.Components.Input;
+using Ecs.Game.Components.Refs;
 using Ecs.Utils;
 using Ecs.Worlds;
 using Leopotam.Ecs;

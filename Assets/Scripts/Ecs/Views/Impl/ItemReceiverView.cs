@@ -1,7 +1,7 @@
-﻿using Ecs.Components;
-using Ecs.Components.Items;
-using Ecs.Components.Parameters;
-using Ecs.Components.Refs;
+﻿using Ecs.Game.Components;
+using Ecs.Game.Components.Items;
+using Ecs.Game.Components.Parameters;
+using Ecs.Game.Components.Refs;
 using Ecs.Utils;
 using Leopotam.Ecs;
 using UnityEngine;

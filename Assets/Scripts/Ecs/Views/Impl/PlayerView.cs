@@ -1,8 +1,8 @@
-﻿using Ecs.Components;
-using Ecs.Components.Camera;
-using Ecs.Components.Inventories;
-using Ecs.Components.Parameters;
-using Ecs.Components.Refs;
+﻿using Ecs.Game.Components;
+using Ecs.Game.Components.Camera;
+using Ecs.Game.Components.Inventories;
+using Ecs.Game.Components.Parameters;
+using Ecs.Game.Components.Refs;
 using Ecs.Utils;
 using Leopotam.Ecs;
 using UnityEngine;

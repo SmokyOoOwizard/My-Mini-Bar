@@ -1,8 +1,10 @@
 ﻿using Ecs.Core;
-using Ecs.Systems.Initialize;
-using Ecs.Systems.Update;
-using Ecs.Systems.Update.Collectables;
-using Ecs.Systems.Update.Drinks;
+using Ecs.Game.Systems.Initialize;
+using Ecs.Game.Systems.Update;
+using Ecs.Game.Systems.Update.Drinks;
+using Ecs.Game.Systems.Update.Items;
+using Ecs.Game.Systems.Update.Player;
+using Ecs.Game.Systems.Update.Timer;
 using Ecs.Worlds;
 
 namespace Ecs

@@ -1,7 +1,7 @@
 ﻿using Cinemachine;
-using Ecs.Components;
-using Ecs.Components.Camera;
-using Ecs.Components.Refs;
+using Ecs.Game.Components;
+using Ecs.Game.Components.Camera;
+using Ecs.Game.Components.Refs;
 using Leopotam.Ecs;
 using UnityEngine;
 

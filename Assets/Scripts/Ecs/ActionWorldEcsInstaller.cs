@@ -1,6 +1,6 @@
-﻿using Ecs.Core;
-using Ecs.Systems.Update;
-using Ecs.Systems.Update.Collectables;
+﻿using Ecs.Action.Systems;
+using Ecs.Core;
+using Ecs.Game.Systems.Update;
 using Ecs.Worlds;
 
 namespace Ecs

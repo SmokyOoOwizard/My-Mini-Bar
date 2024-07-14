@@ -1,4 +1,5 @@
-﻿using Ecs.Components;
+﻿using Ecs.Action.Components;
+using Ecs.Game.Components;
 using Ecs.Worlds;
 using Leopotam.Ecs;
 using UnityEngine;
