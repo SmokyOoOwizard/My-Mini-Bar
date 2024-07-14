@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ecs.Game;
 using Ecs.Game.Components.Drinker;
 using Ecs.Game.Components.Items;
 using Ecs.Game.Components.Refs;
@@ -21,7 +22,8 @@ namespace Ui.DrinkerToolTip
 
         private readonly EcsFilter<
             DrinkerComponent,
-            ItemFilterComponent
+            ItemFilterComponent,
+            ViewInitedComponent
         >.Exclude<ItemRefComponent> _filter;
 
         public DrinkerToolTipsController(
@@ -30,7 +32,8 @@ namespace Ui.DrinkerToolTip
         {
             _filter = world.GetFilter<EcsFilter<
                 DrinkerComponent,
-                ItemFilterComponent
+                ItemFilterComponent,
+                ViewInitedComponent
             >.Exclude<ItemRefComponent>>();
 
 

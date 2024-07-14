@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ecs.Game.Components;
+using Ecs.Game;
 using Ecs.Game.Components.Items;
 using Ecs.Game.Components.Refs;
 using Ecs.Game.Components.Spawner;
 using Ecs.Utils;
-using Ecs.Views.Impl;
 using Ecs.Worlds;
 using Leopotam.Ecs;
 using SimpleUi.Abstracts;
@@ -23,8 +22,8 @@ namespace Ui.ItemSpawnerToolTip
 
         private readonly EcsFilter<
             ItemSpawnerComponent,
-            PrefabComponent<ItemView>,
-            ItemTypeComponent
+            ItemTypeComponent,
+            ViewInitedComponent
         > _filter;
 
         public ItemSpawnerToolTipsController(
@@ -33,8 +32,8 @@ namespace Ui.ItemSpawnerToolTip
         {
             _filter = world.GetFilter<EcsFilter<
                 ItemSpawnerComponent,
-                PrefabComponent<ItemView>,
-                ItemTypeComponent
+                ItemTypeComponent,
+                ViewInitedComponent
             >>();
 
             _filter.AddListener(this);

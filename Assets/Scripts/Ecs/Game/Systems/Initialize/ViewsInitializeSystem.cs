@@ -25,6 +25,8 @@ namespace Ecs.Game.Systems.Initialize
                 var entity = _world.NewEntity();
 
                 view.Init(entity, _world);
+
+                entity.Get<ViewInitedComponent>();
             }
         }
     }

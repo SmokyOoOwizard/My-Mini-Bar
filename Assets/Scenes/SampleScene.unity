@@ -465,7 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f36181217e84617aa757fa851ab34fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1423638868
+--- !u!1001 &1695898653
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -475,29 +475,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 791279060482147677, guid: 2cfd67c3eb47f864bb3e4ba9cddcf7f0,
         type: 3}
-      propertyPath: Timer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 791279060482147677, guid: 2cfd67c3eb47f864bb3e4ba9cddcf7f0,
-        type: 3}
-      propertyPath: timer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 791279060482147677, guid: 2cfd67c3eb47f864bb3e4ba9cddcf7f0,
-        type: 3}
       propertyPath: itemPrefab
       value: 
-      objectReference: {fileID: 5821778154716032083, guid: b85752375e007ca49971e8f2aecb048b,
+      objectReference: {fileID: 4852124272299966900, guid: b85752375e007ca49971e8f2aecb048b,
         type: 3}
     - target: {fileID: 2817195457893615043, guid: 2cfd67c3eb47f864bb3e4ba9cddcf7f0,
         type: 3}
       propertyPath: m_Name
-      value: ItemSpawner (1)
+      value: ItemSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 6394583417119555395, guid: 2cfd67c3eb47f864bb3e4ba9cddcf7f0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.308
+      value: 6.14
       objectReference: {fileID: 0}
     - target: {fileID: 6394583417119555395, guid: 2cfd67c3eb47f864bb3e4ba9cddcf7f0,
         type: 3}
@@ -507,7 +497,7 @@ PrefabInstance:
     - target: {fileID: 6394583417119555395, guid: 2cfd67c3eb47f864bb3e4ba9cddcf7f0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.025
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6394583417119555395, guid: 2cfd67c3eb47f864bb3e4ba9cddcf7f0,
         type: 3}
@@ -549,11 +539,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cfd67c3eb47f864bb3e4ba9cddcf7f0, type: 3}
---- !u!114 &1423638869 stripped
+--- !u!114 &1695898654 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 791279060482147677, guid: 2cfd67c3eb47f864bb3e4ba9cddcf7f0,
     type: 3}
-  m_PrefabInstance: {fileID: 1423638868}
+  m_PrefabInstance: {fileID: 1695898653}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -774,7 +764,7 @@ PrefabInstance:
         type: 3}
       propertyPath: views.Array.data[5]
       value: 
-      objectReference: {fileID: 1423638869}
+      objectReference: {fileID: 1695898654}
     - target: {fileID: 6118119381890265774, guid: 16bc108a830d64a49a913280200507e5,
         type: 3}
       propertyPath: itemSpawnerViews.Array.size
@@ -817,6 +807,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TrashCan
+      objectReference: {fileID: 0}
+    - target: {fileID: 4783922723855223917, guid: 368e45e3c2472b446849356ba1a5f4f0,
+        type: 3}
+      propertyPath: pickUpDistance
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6806716958842411068, guid: 368e45e3c2472b446849356ba1a5f4f0,
         type: 3}
@@ -1150,7 +1145,7 @@ SceneRoots:
   - {fileID: 4142450839750955724}
   - {fileID: 2751950862009630658}
   - {fileID: 875915082}
-  - {fileID: 1423638868}
+  - {fileID: 1695898653}
   - {fileID: 544028871043538309}
   - {fileID: 711571461623757144}
   - {fileID: 1928834577}

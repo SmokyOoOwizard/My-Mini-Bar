@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ecs.Game;
 using Ecs.Game.Components;
 using Ecs.Game.Components.Refs;
 using Ecs.Utils;
@@ -19,7 +20,8 @@ namespace Ui.TrashCanToolTip
         private readonly Dictionary<EcsEntity, TrashCanToolTipView> _activeTips = new();
 
         private readonly EcsFilter<
-            TrashCanComponent
+            TrashCanComponent,
+            ViewInitedComponent
         >.Exclude<TrashDeletingProgressComponent> _filter;
 
         public TrashCanToolTipsController(
@@ -27,7 +29,8 @@ namespace Ui.TrashCanToolTip
         )
         {
             _filter = world.GetFilter<EcsFilter<
-                TrashCanComponent
+                TrashCanComponent,
+                ViewInitedComponent
             >.Exclude<TrashDeletingProgressComponent>>();
 
             _filter.AddListener(this);

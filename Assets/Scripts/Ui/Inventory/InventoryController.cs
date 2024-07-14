@@ -1,4 +1,5 @@
 ﻿using System;
+using Ecs.Game;
 using Ecs.Game.Components;
 using Ecs.Game.Components.Inventories;
 using Ecs.Game.Components.Items;
@@ -19,7 +20,8 @@ namespace Ui.Inventory
         private readonly EcsFilter<
             StackInventoryComponent,
             PlayerComponent,
-            InventoryUpdatedComponent
+            InventoryUpdatedComponent,
+            ViewInitedComponent
         > _filter;
 
         public InventoryController(
@@ -30,7 +32,8 @@ namespace Ui.Inventory
             _filter = world.GetFilter<EcsFilter<
                 StackInventoryComponent,
                 PlayerComponent,
-                InventoryUpdatedComponent
+                InventoryUpdatedComponent,
+                ViewInitedComponent
             >>();
 
 

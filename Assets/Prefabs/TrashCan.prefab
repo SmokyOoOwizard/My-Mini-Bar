@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ebd00a22224b62a911d151e3d61ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpDistance: 0.5
+  pickUpDistance: 2
   filter: 0
   slotTransform: {fileID: 6936701014710308871}
   deleteDuration: 3
