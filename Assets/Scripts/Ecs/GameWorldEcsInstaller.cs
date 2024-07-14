@@ -37,6 +37,7 @@ namespace Ecs
             BindSystem<ResetTimerSystem>();
             BindSystem<TimerSystem>();
 
+            BindSystem<DisableTimerForFullItemSpawnerSystem>();
             BindSystem<ItemSpawnerSystem>();
             BindSystem<SpawnerFreeSlotsSystem>();
 
