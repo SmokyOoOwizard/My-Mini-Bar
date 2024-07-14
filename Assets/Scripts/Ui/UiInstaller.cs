@@ -1,11 +1,11 @@
 using SimpleUi;
 using SimpleUi.Interfaces;
 using SimpleUi.Signals;
+using Ui.DrinkerToolTip;
 using Ui.ItemSpawnerToolTip;
 using Ui.Joystick;
 using Ui.Windows;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Ui
@@ -17,9 +17,10 @@ namespace Ui
 
         [SerializeField]
         private JoystickView joystickView;
-        [FormerlySerializedAs("spawnerToolTipView")]
         [SerializeField]
         private ItemSpawnerToolTipsView spawnerToolTipsView;
+        [SerializeField]
+        private DrinkerToolTipsView drinkerToolTipsView;
 
         public override void InstallBindings()
         {
@@ -47,6 +48,7 @@ namespace Ui
             Container.BindUiView<JoystickController, JoystickView>(joystickView, canvasTransform);
             
             Container.BindUiView<ItemSpawnerToolTipsController, ItemSpawnerToolTipsView>(spawnerToolTipsView, canvasTransform);
+            Container.BindUiView<DrinkerToolTipsController, DrinkerToolTipsView>(drinkerToolTipsView, canvasTransform);
         }
     }
 }

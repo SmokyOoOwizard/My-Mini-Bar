@@ -1,41 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ecs.Game.Components;
+using Ecs.Game.Components.Drinker;
 using Ecs.Game.Components.Items;
 using Ecs.Game.Components.Refs;
-using Ecs.Game.Components.Spawner;
 using Ecs.Utils;
-using Ecs.Views.Impl;
 using Ecs.Worlds;
 using Leopotam.Ecs;
 using SimpleUi.Abstracts;
 using UnityEngine;
 using Zenject;
 
-namespace Ui.ItemSpawnerToolTip
+namespace Ui.DrinkerToolTip
 {
-    public class ItemSpawnerToolTipsController : UiController<ItemSpawnerToolTipsView>,
-                                                 IEcsFilterListener,
-                                                 ILateTickable,
-                                                 IDisposable
+    public class DrinkerToolTipsController : UiController<DrinkerToolTipsView>,
+                                             IEcsFilterListener,
+                                             ILateTickable,
+                                             IDisposable
     {
-        private readonly Dictionary<EcsEntity, ItemSpawnerToolTipView> _activeTips = new();
+        private readonly Dictionary<EcsEntity, DrinkerToolTipView> _activeTips = new();
 
         private readonly EcsFilter<
-            ItemSpawnerComponent,
-            PrefabComponent<ItemView>,
-            ItemTypeComponent
-        > _filter;
+            DrinkerComponent,
+            ItemFilterComponent
+        >.Exclude<ItemRefComponent> _filter;
 
-        public ItemSpawnerToolTipsController(
+        public DrinkerToolTipsController(
             GameEcsWorld world
         )
         {
             _filter = world.GetFilter<EcsFilter<
-                ItemSpawnerComponent,
-                PrefabComponent<ItemView>,
-                ItemTypeComponent
-            >>();
+                DrinkerComponent,
+                ItemFilterComponent
+            >.Exclude<ItemRefComponent>>();
+
 
             _filter.AddListener(this);
         }
@@ -45,7 +42,7 @@ namespace Ui.ItemSpawnerToolTip
         {
             var tip = View.toolTipCollection.Create();
 
-            var itemType = entity.Get<ItemTypeComponent>().Value;
+            var itemType = entity.Get<ItemFilterComponent>().Value;
 
             tip.text.SetText(itemType.ToString());
 

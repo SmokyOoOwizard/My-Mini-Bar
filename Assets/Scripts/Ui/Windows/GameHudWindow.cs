@@ -1,4 +1,5 @@
 ﻿using SimpleUi;
+using Ui.DrinkerToolTip;
 using Ui.ItemSpawnerToolTip;
 using Ui.Joystick;
 
@@ -11,6 +12,7 @@ namespace Ui.Windows
         protected override void AddControllers()
         {
             AddController<ItemSpawnerToolTipsController>();
+            AddController<DrinkerToolTipsController>();
             AddController<JoystickController>();
         }
     }

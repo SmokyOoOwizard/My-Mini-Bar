@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3721091038691064995}
   - component: {fileID: 8250505388844336784}
-  - component: {fileID: 3922399244121048167}
-  - component: {fileID: 7336481579400844838}
+  - component: {fileID: 7746716065092233171}
+  - component: {fileID: 2928240478420923954}
   m_Layer: 5
-  m_Name: ItemSpawnerToolTips
+  m_Name: DrinkerToolTips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4160534860032008176}
   m_CullTransparentMesh: 1
---- !u!114 &3922399244121048167
+--- !u!114 &7746716065092233171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,11 +55,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4160534860032008176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e696f00cf53435abef67ce6cc150c49, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f558159e69944218de1418beb08e899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toolTipCollection: {fileID: 7336481579400844838}
---- !u!114 &7336481579400844838
+  toolTipCollection: {fileID: 2928240478420923954}
+--- !u!114 &2928240478420923954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,8 +68,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4160534860032008176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30c69539f3034cd698036e96d0d79ee6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5584947a038840a88e42e0ff7436b6b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8440898483865020220, guid: 2f3d6e2edaa9cfd4598487b8db819deb, type: 3}
+  prefab: {fileID: 3760299027112010625, guid: c47a2f5e4dd9d3b44ba726cdca04340f, type: 3}
   collectionRoot: {fileID: 3721091038691064995}

@@ -124,7 +124,9 @@ MonoBehaviour:
   canvas: {fileID: 8200033533788406260, guid: 73c13907810256a48a786b3a98120168, type: 3}
   joystickView: {fileID: 849057881928066203, guid: 70cb9423079fcea46b9eed6d1ad4f90f,
     type: 3}
-  spawnerToolTipView: {fileID: 3922399244121048167, guid: 2416e8f3956cf2443a818348c2f82524,
+  spawnerToolTipsView: {fileID: 3922399244121048167, guid: 2416e8f3956cf2443a818348c2f82524,
+    type: 3}
+  drinkerToolTipsView: {fileID: 7746716065092233171, guid: d33530304bfa4ec4eb7cb018706c57cc,
     type: 3}
 --- !u!114 &6118119381890265774
 MonoBehaviour:

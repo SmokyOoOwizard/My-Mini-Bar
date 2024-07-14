@@ -43,13 +43,13 @@ namespace Ecs.Game.Systems.Update.Drinks
 
                 if (!packedItem.TryUnpack(_world, out var itemEntity))
                     continue;
-
+                
+                drinkerEntity.Get<ItemFilterComponent>().Value = GetRandomItemType();
+                
                 drinkerEntity.Del<DrinkProgressComponent>();
                 drinkerEntity.Del<ItemRefComponent>();
 
                 itemEntity.Get<DestroyedComponent>();
-
-                drinkerEntity.Get<ItemFilterComponent>().Value = GetRandomItemType();
             }
         }
 
