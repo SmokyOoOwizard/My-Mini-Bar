@@ -19,7 +19,7 @@ namespace Ecs.Game.Systems.Initialize
         public void Init()
         {
             // tmp
-            Observable.Timer(TimeSpan.FromSeconds(1)).Subscribe(_ => _signalBus.OpenWindow<GameHudWindow>());
+            Observable.TimerFrame(1).Subscribe(_ => _signalBus.OpenWindow<GameHudWindow>());
         }
     }
 }

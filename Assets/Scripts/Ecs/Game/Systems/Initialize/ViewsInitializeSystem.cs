@@ -1,6 +1,7 @@
 ﻿using Ecs.Views;
 using Ecs.Worlds;
 using Leopotam.Ecs;
+using UniRx;
 
 namespace Ecs.Game.Systems.Initialize
 {
@@ -20,14 +21,17 @@ namespace Ecs.Game.Systems.Initialize
 
         public void Init()
         {
-            foreach (var view in _views)
+            Observable.TimerFrame(2).Subscribe(_ =>
             {
-                var entity = _world.NewEntity();
+                foreach (var view in _views)
+                {
+                    var entity = _world.NewEntity();
 
-                view.Init(entity, _world);
+                    view.Init(entity, _world);
 
-                entity.Get<ViewInitedComponent>();
-            }
+                    entity.Get<ViewInitedComponent>();
+                }
+            });
         }
     }
 }
