@@ -6,17 +6,33 @@ using Ecs.Game.Components.Refs;
 using Ecs.Utils;
 using Leopotam.Ecs;
 using UnityEngine;
+using Utils;
 
 namespace Ecs.Views.Impl
 {
     public class PlayerView : AEntityView
     {
-        public float Speed;
-        public float rotationSpeed;
-        public float PickUpDistance;
-        public int MaxStackSize;
-        public Transform stackInventoryParent;
-        public CharacterController characterController;
+        [SerializeField]
+        private float speed;
+
+        [SerializeField]
+        private float rotationSpeed;
+
+        [SerializeField]
+        private float pickUpDistance;
+
+        [SerializeField]
+        private int maxStackSize;
+
+        [SerializeField]
+        private Transform stackInventoryParent;
+
+        [SerializeField]
+        private CharacterController characterController;
+
+        [SerializeField]
+        private Animator animator;
+
 
         public override void Init(EcsEntity entity, EcsWorld world)
         {
@@ -26,7 +42,7 @@ namespace Ecs.Views.Impl
 
             entity.Get<TransformRefComponent>().Value = transform;
 
-            entity.Get<SpeedComponent>().Value = Speed;
+            entity.Get<SpeedComponent>().Value = speed;
 
             entity.Get<CameraTargetComponent>();
 
@@ -34,9 +50,9 @@ namespace Ecs.Views.Impl
 
             entity.Get<StackInventoryComponent>();
 
-            entity.Get<MaxItemsComponent>().Value = MaxStackSize;
+            entity.Get<MaxItemsComponent>().Value = maxStackSize;
 
-            entity.Get<PickUpDistanceComponent>().Value = PickUpDistance;
+            entity.Get<PickUpDistanceComponent>().Value = pickUpDistance;
 
             entity.Get<StackInventoryParentComponent>().Value = stackInventoryParent;
             entity.Get<StackInventoryHeightComponent>();
@@ -44,6 +60,11 @@ namespace Ecs.Views.Impl
             entity.Get<RotationSpeedComponent>().Value = rotationSpeed;
 
             entity.Get<ViewRefComponent<CharacterController>>().Value = characterController;
+        }
+
+        public void SetWalking(bool isWalk)
+        {
+            animator.SetBool(AnimationKeys.Walk, isWalk);
         }
     }
 }

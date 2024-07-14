@@ -47,12 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f36181217e84617aa757fa851ab34fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
+  speed: 2
   rotationSpeed: 250
-  PickUpDistance: 2
-  MaxStackSize: 5
+  pickUpDistance: 2
+  maxStackSize: 5
   stackInventoryParent: {fileID: 4961026665699416117}
   characterController: {fileID: 6518109360979903099}
+  animator: {fileID: 5652412491455236325}
 --- !u!143 &6518109360979903099
 CharacterController:
   m_ObjectHideFlags: 0
@@ -186,6 +187,12 @@ PrefabInstance:
 --- !u!4 &1770279562842100383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3d62dd85df231be40badd6351effe2ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 2241652006121583988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5652412491455236325 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 3d62dd85df231be40badd6351effe2ce,
     type: 3}
   m_PrefabInstance: {fileID: 2241652006121583988}
   m_PrefabAsset: {fileID: 0}

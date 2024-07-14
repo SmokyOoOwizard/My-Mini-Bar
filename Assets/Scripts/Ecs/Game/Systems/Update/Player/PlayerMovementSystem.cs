@@ -3,6 +3,7 @@ using Ecs.Game.Components;
 using Ecs.Game.Components.Input;
 using Ecs.Game.Components.Parameters;
 using Ecs.Game.Components.Refs;
+using Ecs.Views.Impl;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -11,7 +12,13 @@ namespace Ecs.Game.Systems.Update.Player
     public class PlayerMovementSystem : IFixedUpdateEcsSystem
     {
         private EcsFilter<MoveDirectionComponent> _moveFilter;
-        private EcsFilter<ViewRefComponent<CharacterController>, SpeedComponent, PlayerComponent> _playerFilter;
+
+        private EcsFilter<
+            ViewRefComponent<CharacterController>,
+            ViewRefComponent<PlayerView>,
+            SpeedComponent,
+            PlayerComponent
+        > _playerFilter;
 
         public void Run()
         {
@@ -22,13 +29,18 @@ namespace Ecs.Game.Systems.Update.Player
 
             foreach (var entityId in _playerFilter)
             {
-                var speed = _playerFilter.Get2(entityId).Value;
+                var speed = _playerFilter.Get3(entityId).Value;
 
                 var delta = moveDirection.Value * Time.deltaTime * speed;
 
                 var cc = _playerFilter.Get1(entityId).Value;
 
                 cc.Move(new Vector3(delta.x, 0, delta.y));
+                
+                var isMoving = delta != Vector2.zero;
+                
+                var view = _playerFilter.Get2(entityId).Value;
+                view.SetWalking(isMoving);
             }
         }
     }
