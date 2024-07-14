@@ -5,6 +5,7 @@ using Ecs.Game.Systems.Update.Drinks;
 using Ecs.Game.Systems.Update.Items;
 using Ecs.Game.Systems.Update.Player;
 using Ecs.Game.Systems.Update.Timer;
+using Ecs.Game.Systems.Update.TrashCan;
 using Ecs.Worlds;
 
 namespace Ecs
@@ -48,6 +49,10 @@ namespace Ecs
             BindSystem<DrinkSystem>();
             BindSystem<DrinkProgressSystem>();
             BindSystem<FinishDrinkSystem>();
+
+            BindSystem<TrashCanSystem>();
+            BindSystem<TrashCanProgressSystem>();
+            BindSystem<TrashCanFinishSystem>();
 
 
             BindSystem<TweenSystem>();
