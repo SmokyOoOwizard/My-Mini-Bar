@@ -3,13 +3,14 @@ using Ecs.Components.Items;
 using Ecs.Components.Spawner;
 using Ecs.Core;
 using Ecs.Utils;
+using Ecs.Worlds;
 using Leopotam.Ecs;
 
 namespace Ecs.Systems.Update
 {
     public class SpawnerFreeSlotsSystem : IUpdateEcsSystem
     {
-        private readonly EcsWorld _world;
+        private readonly GameEcsWorld _world;
 
         private EcsFilter<
             ItemSpawnerComponent,
@@ -17,7 +18,7 @@ namespace Ecs.Systems.Update
             ItemFreeSlotsComponent
         > _spawnerFilter;
 
-        public SpawnerFreeSlotsSystem(EcsWorld world)
+        public SpawnerFreeSlotsSystem(GameEcsWorld world)
         {
             _world = world;
         }

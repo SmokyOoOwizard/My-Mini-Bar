@@ -2,20 +2,21 @@
 using Ecs.Components.Items;
 using Ecs.Core;
 using Ecs.Utils;
+using Ecs.Worlds;
 using Leopotam.Ecs;
 
 namespace Ecs.Systems.Update.Drinks
 {
     public class DrinkSystem : IUpdateEcsSystem
     {
-        private readonly EcsWorld _world;
+        private readonly GameEcsWorld _world;
 
         private EcsFilter<
             DrinkerComponent,
             ItemRefComponent
         >.Exclude<DrinkProgressComponent> _drinkersFilter;
 
-        public DrinkSystem(EcsWorld world)
+        public DrinkSystem(GameEcsWorld world)
         {
             _world = world;
         }

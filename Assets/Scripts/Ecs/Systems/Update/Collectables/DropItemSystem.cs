@@ -5,6 +5,7 @@ using Ecs.Components.Items;
 using Ecs.Components.Refs;
 using Ecs.Core;
 using Ecs.Utils;
+using Ecs.Worlds;
 using Leopotam.Ecs;
 using UnityEngine;
 using Utils.Dotween;
@@ -13,14 +14,14 @@ namespace Ecs.Systems.Update.Collectables
 {
     public class DropItemSystem : IUpdateEcsSystem
     {
-        private readonly EcsWorld _world;
+        private readonly GameEcsWorld _world;
 
         private EcsFilter<
             DropItemToComponent,
             StackInventoryComponent
         > _inventoriesFilter;
 
-        public DropItemSystem(EcsWorld world)
+        public DropItemSystem(GameEcsWorld world)
         {
             _world = world;
         }

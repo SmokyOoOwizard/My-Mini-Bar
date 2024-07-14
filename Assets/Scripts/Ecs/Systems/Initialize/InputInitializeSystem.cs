@@ -1,13 +1,15 @@
 ﻿using Ecs.Components.Input;
+using Ecs.Core;
+using Ecs.Worlds;
 using Leopotam.Ecs;
 
 namespace Ecs.Systems.Initialize
 {
     public class InputInitializeSystem : IEcsInitSystem
     {
-        private readonly EcsWorld _ecsWorld;
+        private readonly GameEcsWorld _ecsWorld;
 
-        public InputInitializeSystem(EcsWorld ecsWorld)
+        public InputInitializeSystem(GameEcsWorld ecsWorld)
         {
             _ecsWorld = ecsWorld;
         }

@@ -5,13 +5,14 @@ using Ecs.Components.Parameters;
 using Ecs.Components.Refs;
 using Ecs.Core;
 using Ecs.Utils;
+using Ecs.Worlds;
 using Leopotam.Ecs;
 
 namespace Ecs.Systems.Update.Collectables
 {
     public class CheckDistanceToItemReceiverSystem : IUpdateEcsSystem
     {
-        private readonly EcsWorld _world;
+        private readonly GameEcsWorld _world;
 
         private EcsFilter<
             StackInventoryComponent,
@@ -26,7 +27,7 @@ namespace Ecs.Systems.Update.Collectables
             ItemFilterComponent
         >.Exclude<ItemRefComponent, DoneComponent> _slotsFilter;
 
-        public CheckDistanceToItemReceiverSystem(EcsWorld world)
+        public CheckDistanceToItemReceiverSystem(GameEcsWorld world)
         {
             _world = world;
         }

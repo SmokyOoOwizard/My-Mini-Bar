@@ -1,15 +1,17 @@
-﻿using Ecs.Views;
+﻿using Ecs.Core;
+using Ecs.Views;
+using Ecs.Worlds;
 using Leopotam.Ecs;
 
 namespace Ecs.Systems.Initialize
 {
     public class ViewsInitializeSystem : IEcsInitSystem
     {
-        private readonly EcsWorld _world;
+        private readonly GameEcsWorld _world;
         private readonly AEntityView[] _views;
 
         public ViewsInitializeSystem(
-            EcsWorld world,
+            GameEcsWorld world,
             AEntityView[] views
         )
         {

@@ -5,6 +5,7 @@ using Ecs.Components.Parameters;
 using Ecs.Components.Refs;
 using Ecs.Core;
 using Ecs.Utils;
+using Ecs.Worlds;
 using Leopotam.Ecs;
 using UnityEngine;
 using Utils.Dotween;
@@ -13,7 +14,7 @@ namespace Ecs.Systems.Update.Collectables
 {
     public class CollectItemSystem : IUpdateEcsSystem
     {
-        private readonly EcsWorld _world;
+        private readonly GameEcsWorld _world;
 
         private EcsFilter<
             CollectItemToComponent,
@@ -21,7 +22,7 @@ namespace Ecs.Systems.Update.Collectables
             HeightComponent
         > _itemsFilter;
 
-        public CollectItemSystem(EcsWorld world)
+        public CollectItemSystem(GameEcsWorld world)
         {
             _world = world;
         }

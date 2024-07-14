@@ -5,13 +5,14 @@ using Ecs.Components.Parameters;
 using Ecs.Components.Refs;
 using Ecs.Core;
 using Ecs.Utils;
+using Ecs.Worlds;
 using Leopotam.Ecs;
 
 namespace Ecs.Systems.Update.Collectables
 {
     public class PickupItemFromSlotSystem : IUpdateEcsSystem
     {
-        private readonly EcsWorld _world;
+        private readonly GameEcsWorld _world;
 
         private EcsFilter<
             StackInventoryComponent,
@@ -27,7 +28,7 @@ namespace Ecs.Systems.Update.Collectables
             SenderComponent
         > _itemSlotsFilter;
 
-        public PickupItemFromSlotSystem(EcsWorld world)
+        public PickupItemFromSlotSystem(GameEcsWorld world)
         {
             _world = world;
         }

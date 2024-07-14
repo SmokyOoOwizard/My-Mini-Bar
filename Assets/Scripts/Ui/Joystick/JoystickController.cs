@@ -3,7 +3,9 @@ using Ecs.Components;
 using Ecs.Components.Camera;
 using Ecs.Components.Input;
 using Ecs.Components.Refs;
+using Ecs.Core;
 using Ecs.Utils;
+using Ecs.Worlds;
 using Leopotam.Ecs;
 using SimpleUi.Abstracts;
 using UniRx;
@@ -19,7 +21,7 @@ namespace Ui.Joystick
 
         private Vector2 _dragStart;
 
-        public JoystickController(EcsWorld world)
+        public JoystickController(GameEcsWorld world)
         {
             _moveFilter = world.GetFilter<EcsFilter<MoveDirectionComponent>>();
             _activeCameraFilter = world.GetFilter<EcsFilter<ActiveComponent, CameraComponent, TransformRefComponent>>();

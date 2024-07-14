@@ -4,13 +4,14 @@ using Ecs.Components.Items;
 using Ecs.Components.Parameters;
 using Ecs.Core;
 using Ecs.Utils;
+using Ecs.Worlds;
 using Leopotam.Ecs;
 
 namespace Ecs.Systems.Update.Collectables
 {
     public class StackInventoryHeightSystem : IUpdateEcsSystem
     {
-        private readonly EcsWorld _world;
+        private readonly GameEcsWorld _world;
 
         private EcsFilter<
             StackInventoryComponent,
@@ -20,7 +21,7 @@ namespace Ecs.Systems.Update.Collectables
 
        
 
-        public StackInventoryHeightSystem(EcsWorld world)
+        public StackInventoryHeightSystem(GameEcsWorld world)
         {
             _world = world;
         }

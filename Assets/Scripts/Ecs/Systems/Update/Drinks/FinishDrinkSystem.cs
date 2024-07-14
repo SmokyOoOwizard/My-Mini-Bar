@@ -3,6 +3,7 @@ using Ecs.Components;
 using Ecs.Components.Items;
 using Ecs.Core;
 using Ecs.Utils;
+using Ecs.Worlds;
 using Leopotam.Ecs;
 using Random = UnityEngine.Random;
 
@@ -10,7 +11,7 @@ namespace Ecs.Systems.Update.Drinks
 {
     public class FinishDrinkSystem : IUpdateEcsSystem
     {
-        private readonly EcsWorld _world;
+        private readonly GameEcsWorld _world;
 
         private EcsFilter<
             DrinkerComponent,
@@ -19,7 +20,7 @@ namespace Ecs.Systems.Update.Drinks
             ItemRefComponent
         > _drinkersFilter;
 
-        public FinishDrinkSystem(EcsWorld world)
+        public FinishDrinkSystem(GameEcsWorld world)
         {
             _world = world;
         }

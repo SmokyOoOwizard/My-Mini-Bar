@@ -5,6 +5,7 @@ using Ecs.Components.Timer;
 using Ecs.Core;
 using Ecs.Utils;
 using Ecs.Views.Impl;
+using Ecs.Worlds;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace Ecs.Systems.Update
 {
     public class ItemSpawnerSystem : IUpdateEcsSystem
     {
-        private readonly EcsWorld _world;
+        private readonly GameEcsWorld _world;
 
         private EcsFilter<
             ItemSpawnerComponent,
@@ -21,7 +22,7 @@ namespace Ecs.Systems.Update
             ItemFreeSlotsComponent
         >.Exclude<FullComponent> _spawnerFilter;
 
-        public ItemSpawnerSystem(EcsWorld world)
+        public ItemSpawnerSystem(GameEcsWorld world)
         {
             _world = world;
         }
