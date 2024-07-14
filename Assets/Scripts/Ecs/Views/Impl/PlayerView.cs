@@ -66,5 +66,10 @@ namespace Ecs.Views.Impl
         {
             animator.SetBool(AnimationKeys.Walk, isWalk);
         }
+        
+        public void SetCarrying(bool isCarrying)
+        {
+            animator.SetBool(AnimationKeys.Carrying, isCarrying);
+        }
     }
 }

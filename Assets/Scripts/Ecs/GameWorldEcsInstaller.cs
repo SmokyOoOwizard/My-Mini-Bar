@@ -41,6 +41,7 @@ namespace Ecs
 
             BindSystem<CheckDistanceToItemReceiverSystem>();
 
+            BindSystem<InventoryViewNotifyerSystem>();
             BindSystem<StackInventoryHeightSystem>();
 
 

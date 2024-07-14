@@ -35,6 +35,8 @@ namespace Ecs.Action.Systems
 
                 var inventory = ownerEntity.Get<StackInventoryComponent>().Value;
                 inventory.Push(packedItem);
+
+                ownerEntity.Get<InventoryUpdatedComponent>();
             }
         }
     }
