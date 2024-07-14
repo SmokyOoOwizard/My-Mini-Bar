@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Leopotam.Ecs;
 using Zenject;
 
@@ -6,63 +8,78 @@ namespace Ecs.Core
 {
     public class EcsBootstrap : ITickable, IFixedTickable, IDisposable
     {
-        private readonly EcsWorld _world;
-        private readonly EcsSystems _updateSystems;
-        private readonly EcsSystems _fixedSystems;
+        private readonly List<EcsWorld> _worlds = new();
+        private readonly List<EcsSystems> _updateSystems = new();
+        private readonly List<EcsSystems> _fixedSystems = new();
 
         public EcsBootstrap(
-            EcsWorld world,
-            IEcsInitSystem[] initSystems,
-            IUpdateEcsSystem[] updateSystems,
-            IFixedUpdateEcsSystem[] fixedSystems
+            SystemInstaller[] rawSystems
         )
         {
-            _world = world;
-            _updateSystems = new EcsSystems(_world, "Update");
-            foreach (var initSystem in initSystems)
-            {
-                _updateSystems.Add(initSystem);
-            }
+            var systems = rawSystems
+                         .GroupBy(c => c.World)
+                         .ToDictionary(c => c.Key, c => c.Select(c => c.System).ToList());
 
-            foreach (var system in updateSystems)
+            foreach (var (world, worldSystems) in systems)
             {
-                _updateSystems.Add(system);
-            }
+                _worlds.Add(world);
+                var updateSystems = new EcsSystems(world, "Update");
+                var fixedSystems = new EcsSystems(world, "Fixed");
 
-
-            _fixedSystems = new EcsSystems(_world, "Fixed");
-            foreach (var system in fixedSystems)
-            {
-                _fixedSystems.Add(system);
-            }
+                foreach (var system in worldSystems)
+                {
+                    if (system is IFixedUpdateEcsSystem)
+                        fixedSystems.Add(system);
+                    else
+                        updateSystems.Add(system);
+                }
 
 #if UNITY_EDITOR
-            Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(_world);
-            Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_updateSystems);
-            Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_fixedSystems);
+                Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(world);
+                Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(updateSystems);
+                Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(fixedSystems);
 #endif
 
-            _updateSystems.Init();
-            _fixedSystems.Init();
+                updateSystems.Init();
+                fixedSystems.Init();
 
-
+                _updateSystems.Add(updateSystems);
+                _fixedSystems.Add(fixedSystems);
+            }
         }
 
         public void Tick()
         {
-            _updateSystems.Run();
+            foreach (var updateSystem in _updateSystems)
+            {
+                updateSystem.Run();
+            }
         }
 
         public void FixedTick()
         {
-            _fixedSystems.Run();
+            foreach (var fixedSystem in _fixedSystems)
+            {
+                fixedSystem.Run();
+            }
         }
 
         public void Dispose()
         {
-            _updateSystems.Destroy();
-            _fixedSystems.Destroy();
-            _world.Destroy();
+            foreach (var updateSystem in _updateSystems)
+            {
+                updateSystem.Destroy();
+            }
+
+            foreach (var fixedSystem in _fixedSystems)
+            {
+                fixedSystem.Destroy();
+            }
+
+            foreach (var world in _worlds)
+            {
+                world.Destroy();
+            }
         }
     }
 }
