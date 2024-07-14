@@ -73,13 +73,10 @@ namespace Ui.DrinkerToolTip
             {
                 var transform = entity.Get<TransformRefComponent>().Value;
 
-                var viewPosition = camera.WorldToViewportPoint(transform.position);
-
                 var rectTransform = (RectTransform)tip.transform;
-
-                var targetPos = new Vector2(viewPosition.x * Screen.width, viewPosition.y * Screen.height);
-
-                rectTransform.anchoredPosition = targetPos;
+                
+                var transformedPos = transform.TransformPoint(Vector3.zero);
+                rectTransform.position = RectTransformUtility.WorldToScreenPoint(camera, transformedPos);
             }
         }
 

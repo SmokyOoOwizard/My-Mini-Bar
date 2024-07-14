@@ -7,6 +7,7 @@ using Ecs.Utils;
 using Ecs.Worlds;
 using Leopotam.Ecs;
 using SimpleUi.Abstracts;
+using UnityEngine;
 using UnityEngine.Pool;
 
 namespace Ui.Inventory
@@ -46,6 +47,8 @@ namespace Ui.Inventory
             var inventory = entity.Get<StackInventoryComponent>().Value;
             var itemsCount = inventory.Count;
 
+            Debug.Log("INVENTORYYY");
+            
             ResizeViewCollection(itemsCount);
 
             using var viewEnumerator = View.itemsCollection.GetEnumerator();

@@ -50,7 +50,7 @@ namespace Ui
             var canvasTransform = canvasView.transform;
 
             Container.Bind<IUiFilter>().To<CustomGraphicRaycaster>().FromComponentOn(canvas.gameObject).AsSingle();
-
+            
             Container.BindUiView<JoystickController, JoystickView>(joystickView, canvasTransform);
             
             Container.BindUiView<ItemSpawnerToolTipsController, ItemSpawnerToolTipsView>(spawnerToolTipsView, canvasTransform);
