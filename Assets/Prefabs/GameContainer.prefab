@@ -128,6 +128,8 @@ MonoBehaviour:
     type: 3}
   drinkerToolTipsView: {fileID: 7746716065092233171, guid: d33530304bfa4ec4eb7cb018706c57cc,
     type: 3}
+  inventoryView: {fileID: 6410427749340271130, guid: a5f044feabb939a4e840578e5247f9ec,
+    type: 3}
 --- !u!114 &6118119381890265774
 MonoBehaviour:
   m_ObjectHideFlags: 0

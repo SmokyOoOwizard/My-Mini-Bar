@@ -2,6 +2,7 @@ using SimpleUi;
 using SimpleUi.Interfaces;
 using SimpleUi.Signals;
 using Ui.DrinkerToolTip;
+using Ui.Inventory;
 using Ui.ItemSpawnerToolTip;
 using Ui.Joystick;
 using Ui.Windows;
@@ -21,6 +22,8 @@ namespace Ui
         private ItemSpawnerToolTipsView spawnerToolTipsView;
         [SerializeField]
         private DrinkerToolTipsView drinkerToolTipsView;
+        [SerializeField]
+        private InventoryView inventoryView;
 
         public override void InstallBindings()
         {
@@ -49,6 +52,7 @@ namespace Ui
             
             Container.BindUiView<ItemSpawnerToolTipsController, ItemSpawnerToolTipsView>(spawnerToolTipsView, canvasTransform);
             Container.BindUiView<DrinkerToolTipsController, DrinkerToolTipsView>(drinkerToolTipsView, canvasTransform);
+            Container.BindUiView<InventoryController, InventoryView>(inventoryView, canvasTransform);
         }
     }
 }
